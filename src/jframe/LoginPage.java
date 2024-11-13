@@ -5,11 +5,9 @@
 package jframe;
 
 // Import statements go here
-import com.mysql.cj.protocol.Resultset;
+import Jframe.HomePage;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 /**
@@ -123,7 +121,7 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel3.setText("Welcome To");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 830));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 840));
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -195,7 +193,7 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel14.setText("Login Page");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 160, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, 540, 830));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, 550, 840));
 
         setSize(new java.awt.Dimension(1539, 836));
         setLocationRelativeTo(null);
