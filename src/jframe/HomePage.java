@@ -1068,10 +1068,10 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel40MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        //TODO: uncomment after page implementation pushed
-        // ManageBooks manage=new ManageBooks();
-        // manage.setVisible(true);
-        // dispose();
+
+         ManageBooks manage=new ManageBooks();
+         manage.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
@@ -1140,7 +1140,7 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel39MouseExited
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        //TODO: uncomment after page implementation pushed
+        
         //ManageStudents manage= new ManageStudents();
         //manage.setVisible(true);
         //dispose();
