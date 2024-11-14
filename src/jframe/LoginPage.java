@@ -5,7 +5,7 @@
 package jframe;
 
 // Import statements go here
-import Jframe.HomePage;
+import jframe.HomePage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
