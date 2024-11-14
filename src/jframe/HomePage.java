@@ -34,125 +34,110 @@ public class HomePage extends javax.swing.JFrame {
         setDetailsToBookTable();
         setDataToCards();
     }
-    
-    Color mouseEnter=new Color(0,0,0);
-    Color mouseExit=new Color(51,51,51);
-public void showPieChart(){
-        
+
+    Color mouseEnter = new Color(0, 0, 0);
+    Color mouseExit = new Color(51, 51, 51);
+
+    public void showPieChart() {
+
         //create dataset
-      DefaultPieDataset barDataset = new DefaultPieDataset( );
-      try
-      {
-          Connection con = DBConnection.getConnection();
-          String sql="select bookname, count(*) as issuecount from issue_book_details group by bookid";
-          Statement st=con.createStatement();
-          ResultSet rs=st.executeQuery(sql);
-          while(rs.next())
-          {
-              barDataset.setValue( rs.getString("bookname") , new Double(rs.getDouble("issuecount")) );  
-          }
-      }
-      catch(Exception e)
-      {
-          e.printStackTrace();
-      }
-      
-      
-      //create chart
-       JFreeChart piechart = ChartFactory.createPieChart("Issued Book Details",barDataset, true,true,false);//explain
-      
-        PiePlot piePlot =(PiePlot) piechart.getPlot();
-      
-       //changing pie chart blocks colors
-       piePlot.setSectionPaint("Java: A Beginner’s Guide", new Color(255,255,102));
-        piePlot.setSectionPaint("Head First Java", new Color(102,255,102));
-        piePlot.setSectionPaint("Java for Dummies", new Color(255,102,153));
-        piePlot.setSectionPaint("Effective Java", new Color(0,204,204));
-      
-       
+        DefaultPieDataset barDataset = new DefaultPieDataset();
+        try {
+            Connection con = DBConnection.getConnection();
+            String sql = "select bookname, count(*) as issuecount from issue_book_details group by bookid";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                barDataset.setValue(rs.getString("bookname"), new Double(rs.getDouble("issuecount")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //create chart
+        JFreeChart piechart = ChartFactory.createPieChart("Issued Book Details", barDataset, true, true, false);//explain
+
+        PiePlot piePlot = (PiePlot) piechart.getPlot();
+
+        //changing pie chart blocks colors
+        piePlot.setSectionPaint("Java: A Beginner’s Guide", new Color(255, 255, 102));
+        piePlot.setSectionPaint("Head First Java", new Color(102, 255, 102));
+        piePlot.setSectionPaint("Java for Dummies", new Color(255, 102, 153));
+        piePlot.setSectionPaint("Effective Java", new Color(0, 204, 204));
+
         piePlot.setBackgroundPaint(Color.white);
-        
+
         //create chartPanel to display chart(graph)
         ChartPanel barChartPanel = new ChartPanel(piechart);
         PanelPieChart.removeAll();
         PanelPieChart.add(barChartPanel, BorderLayout.CENTER);
         PanelPieChart.validate();
     }
-    public void setDetailsToBookTable()
-    {
-        
-        try
-        {
-            Connection con=DBConnection.getConnection();
-            Statement st=con.createStatement();
-            ResultSet rst=st.executeQuery("select * from book_details");
-            while(rst.next())
-            {
-                int book_id=rst.getInt("bookid");
-                String book_name=rst.getString("bookname");
-                String author=rst.getString("author");
-                int qty=rst.getInt("quantity");
-                Object obj[]= {book_id,book_name,author,qty}; 
-                DefaultTableModel model=(DefaultTableModel)tbl_bookdetails.getModel();
+
+    public void setDetailsToBookTable() {
+
+        try {
+            Connection con = DBConnection.getConnection();
+            Statement st = con.createStatement();
+            ResultSet rst = st.executeQuery("select * from book_details");
+            while (rst.next()) {
+                int book_id = rst.getInt("bookid");
+                String book_name = rst.getString("bookname");
+                String author = rst.getString("author");
+                int qty = rst.getInt("quantity");
+                Object obj[] = {book_id, book_name, author, qty};
+                DefaultTableModel model = (DefaultTableModel) tbl_bookdetails.getModel();
                 model.addRow(obj);
             }
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void setDetailsToStudentTable()
-    {
-        try
-        {
-            Connection con=DBConnection.getConnection();
-            Statement st=con.createStatement();
-            ResultSet rst=st.executeQuery("select * from student_details");
-            while(rst.next())
-            {
-                int student_id=rst.getInt("studentid");
-                String student_name=rst.getString("studentname");
-                String course=rst.getString("course");
-                String branch=rst.getString("branch");
-                Object obj[]= {student_id,student_name,course,branch}; 
-                DefaultTableModel model=(DefaultTableModel)tbl_studentdetails.getModel();
+
+    public void setDetailsToStudentTable() {
+        try {
+            Connection con = DBConnection.getConnection();
+            Statement st = con.createStatement();
+            ResultSet rst = st.executeQuery("select * from student_details");
+            while (rst.next()) {
+                int student_id = rst.getInt("studentid");
+                String student_name = rst.getString("studentname");
+                String course = rst.getString("course");
+                String branch = rst.getString("branch");
+                Object obj[] = {student_id, student_name, course, branch};
+                DefaultTableModel model = (DefaultTableModel) tbl_studentdetails.getModel();
                 model.addRow(obj);
             }
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void setDataToCards()
-    {
-        Statement st=null;
-        ResultSet rs=null;
-        long due=System.currentTimeMillis();
-        java.sql.Date today=new java.sql.Date(due);
-        try
-        {
-            Connection con=DBConnection.getConnection();
-            st=con.createStatement();
-            rs=st.executeQuery("select * from book_details");
+
+    public void setDataToCards() {
+        Statement st = null;
+        ResultSet rs = null;
+        long due = System.currentTimeMillis();
+        java.sql.Date today = new java.sql.Date(due);
+        try {
+            Connection con = DBConnection.getConnection();
+            st = con.createStatement();
+            rs = st.executeQuery("select * from book_details");
             rs.last();
             lbl_books.setText(Integer.toString(rs.getRow()));
-            rs=st.executeQuery("select * from student_details");
+            rs = st.executeQuery("select * from student_details");
             rs.last();
             lbl_students.setText(Integer.toString(rs.getRow()));
-            rs=st.executeQuery("select * from issue_book_details where status='"+"pending"+"'");
+            rs = st.executeQuery("select * from issue_book_details where status='" + "pending" + "'");
             rs.last();
             lbl_issued.setText(Integer.toString(rs.getRow()));
-            rs=st.executeQuery("select * from issue_book_details where duedate<'"+today+"'and status='"+"pending"+"'");
+            rs = st.executeQuery("select * from issue_book_details where duedate<'" + today + "'and status='" + "pending" + "'");
             rs.last();
             lbl_defaulters.setText(Integer.toString(rs.getRow()));
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -273,7 +258,7 @@ public void showPieChart(){
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 12, -1, 62));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 62));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setPreferredSize(new java.awt.Dimension(5, 50));
@@ -289,13 +274,13 @@ public void showPieChart(){
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 12, -1, 62));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 5, 45));
 
         jLabel5.setBackground(java.awt.Color.white);
-        jLabel5.setFont(new java.awt.Font("JetBrains Mono", 1, 34)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Noto Sans CJK SC", 0, 34)); // NOI18N
         jLabel5.setForeground(java.awt.Color.white);
-        jLabel5.setText("Libro Systems");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 12, -1, 60));
+        jLabel5.setText("Libro");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, 60));
 
         jPanel45.setBackground(new java.awt.Color(255, 51, 102));
         jPanel45.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -325,7 +310,7 @@ public void showPieChart(){
             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel1.add(jPanel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 20, 40, 40));
+        jPanel1.add(jPanel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(1830, 20, 40, 40));
 
         jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 28)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(204, 204, 204));
@@ -333,7 +318,7 @@ public void showPieChart(){
         jLabel12.setText("Admin");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 260, 60));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1540, 80));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1900, 70));
 
         jPanel3.setBackground(new java.awt.Color(69, 66, 66));
         jPanel3.setForeground(new java.awt.Color(102, 102, 255));
@@ -349,9 +334,9 @@ public void showPieChart(){
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
         jLabel3.setText("   Home");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 340, -1));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 190, -1));
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 340, 60));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 340, 60));
 
         jPanel6.setBackground(new java.awt.Color(51, 51, 51));
         jPanel6.setForeground(java.awt.Color.red);
@@ -412,7 +397,7 @@ public void showPieChart(){
                 jLabel11MouseExited(evt);
             }
         });
-        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 340, 50));
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, 50));
 
         jPanel11.setBackground(new java.awt.Color(51, 51, 51));
         jPanel11.setForeground(java.awt.Color.red);
@@ -466,7 +451,7 @@ public void showPieChart(){
 
         jPanel6.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, 60));
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, 60));
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, 60));
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
         jPanel5.setForeground(java.awt.Color.red);
@@ -488,7 +473,7 @@ public void showPieChart(){
                 jLabel6MouseExited(evt);
             }
         });
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 320, 60));
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
         jPanel23.setBackground(new java.awt.Color(51, 51, 51));
         jPanel23.setForeground(java.awt.Color.red);
@@ -594,7 +579,7 @@ public void showPieChart(){
 
         jPanel5.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, 60));
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 340, 60));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 340, 60));
 
         jPanel31.setBackground(new java.awt.Color(51, 51, 51));
         jPanel31.setForeground(java.awt.Color.red);
@@ -604,7 +589,7 @@ public void showPieChart(){
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminIcons/icons8_Read_Online_26px.png"))); // NOI18N
-        jLabel7.setText("   Manage Students");
+        jLabel7.setText("  Manage Students");
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
@@ -616,9 +601,9 @@ public void showPieChart(){
                 jLabel7MouseExited(evt);
             }
         });
-        jPanel31.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 60));
+        jPanel31.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 210, 60));
 
-        jPanel3.add(jPanel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 340, 60));
+        jPanel3.add(jPanel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 340, 60));
 
         jPanel32.setBackground(java.awt.Color.red);
         jPanel32.setForeground(java.awt.Color.red);
@@ -645,7 +630,7 @@ public void showPieChart(){
                 jLabel34MouseExited(evt);
             }
         });
-        jPanel34.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -4, 340, 60));
+        jPanel34.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 250, 60));
 
         jPanel35.setBackground(java.awt.Color.red);
         jPanel35.setForeground(java.awt.Color.red);
@@ -660,7 +645,7 @@ public void showPieChart(){
 
         jPanel34.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, -1, 60));
 
-        jPanel3.add(jPanel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, -1, 60));
+        jPanel3.add(jPanel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, -1, 60));
 
         jPanel36.setBackground(new java.awt.Color(51, 51, 51));
         jPanel36.setForeground(java.awt.Color.red);
@@ -682,9 +667,9 @@ public void showPieChart(){
                 jLabel36MouseExited(evt);
             }
         });
-        jPanel36.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 60));
+        jPanel36.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 260, 60));
 
-        jPanel3.add(jPanel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 340, 60));
+        jPanel3.add(jPanel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 340, 60));
 
         jPanel37.setBackground(new java.awt.Color(51, 51, 51));
         jPanel37.setForeground(java.awt.Color.red);
@@ -706,9 +691,9 @@ public void showPieChart(){
                 jLabel37MouseExited(evt);
             }
         });
-        jPanel37.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 340, 70));
+        jPanel37.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 260, 50));
 
-        jPanel3.add(jPanel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 340, 60));
+        jPanel3.add(jPanel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 340, 60));
 
         jPanel38.setBackground(new java.awt.Color(51, 51, 51));
         jPanel38.setForeground(java.awt.Color.red);
@@ -730,9 +715,9 @@ public void showPieChart(){
                 jLabel38MouseExited(evt);
             }
         });
-        jPanel38.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 340, 70));
+        jPanel38.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 60));
 
-        jPanel3.add(jPanel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 550, 340, 60));
+        jPanel3.add(jPanel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 340, 60));
 
         jPanel39.setBackground(new java.awt.Color(102, 102, 255));
         jPanel39.setForeground(new java.awt.Color(255, 0, 102));
@@ -759,9 +744,9 @@ public void showPieChart(){
                 jLabel40MouseEntered(evt);
             }
         });
-        jPanel39.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 60));
+        jPanel39.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 60));
 
-        jPanel3.add(jPanel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 340, 60));
+        jPanel3.add(jPanel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 340, 60));
 
         jPanel33.setBackground(new java.awt.Color(51, 51, 51));
         jPanel33.setForeground(java.awt.Color.red);
@@ -783,11 +768,11 @@ public void showPieChart(){
                 jLabel20MouseExited(evt);
             }
         });
-        jPanel33.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 60));
+        jPanel33.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 200, 60));
 
-        jPanel3.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 340, 60));
+        jPanel3.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 340, 60));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 340, 740));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 340, 940));
 
         jPanel15.setBackground(new java.awt.Color(51, 51, 51));
         jPanel15.setForeground(java.awt.Color.red);
@@ -903,19 +888,19 @@ public void showPieChart(){
         lbl_books.setText(" 10");
         jPanel41.add(lbl_books, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 42, 260, -1));
 
-        jPanel40.add(jPanel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 260, 140));
+        jPanel40.add(jPanel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 260, 140));
 
         jLabel33.setFont(new java.awt.Font("Geometr415 Blk BT", 1, 24)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(102, 102, 102));
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel33.setText("Book Details");
-        jPanel40.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, 580, -1));
+        jPanel40.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 570, 580, -1));
 
         jLabel43.setFont(new java.awt.Font("Geometr415 Blk BT", 1, 24)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(102, 102, 102));
         jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel43.setText("No. of Students");
-        jPanel40.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 260, -1));
+        jPanel40.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 260, -1));
 
         jPanel42.setBackground(new java.awt.Color(204, 204, 204));
         jPanel42.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(102, 102, 255)));
@@ -927,7 +912,7 @@ public void showPieChart(){
         lbl_students.setText(" 10");
         jPanel42.add(lbl_students, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 42, 260, -1));
 
-        jPanel40.add(jPanel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 260, 140));
+        jPanel40.add(jPanel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 260, 140));
 
         jPanel43.setBackground(new java.awt.Color(204, 204, 204));
         jPanel43.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, java.awt.Color.red));
@@ -939,19 +924,19 @@ public void showPieChart(){
         lbl_issued.setText(" 10");
         jPanel43.add(lbl_issued, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 42, 260, -1));
 
-        jPanel40.add(jPanel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, 260, 140));
+        jPanel40.add(jPanel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, 260, 140));
 
         jLabel45.setFont(new java.awt.Font("Geometr415 Blk BT", 1, 24)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(102, 102, 102));
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel45.setText("Issued Books");
-        jPanel40.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 260, -1));
+        jPanel40.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, 260, -1));
 
         jLabel46.setFont(new java.awt.Font("Geometr415 Blk BT", 1, 24)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(102, 102, 102));
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel46.setText("Defaulter List");
-        jPanel40.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, 260, -1));
+        jPanel40.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 50, 260, -1));
 
         jPanel44.setBackground(new java.awt.Color(204, 204, 204));
         jPanel44.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(102, 102, 255)));
@@ -964,23 +949,23 @@ public void showPieChart(){
         lbl_defaulters.setText(" 10");
         jPanel44.add(lbl_defaulters, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 42, 260, -1));
 
-        jPanel40.add(jPanel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 80, 260, 140));
+        jPanel40.add(jPanel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 90, 260, 140));
 
         jLabel48.setFont(new java.awt.Font("Geometr415 Blk BT", 1, 24)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(102, 102, 102));
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel48.setText("No. of Books");
-        jPanel40.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 260, -1));
+        jPanel40.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 260, -1));
 
         jLabel49.setFont(new java.awt.Font("Geometr415 Blk BT", 1, 24)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(102, 102, 102));
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel49.setText("Student Details");
-        jPanel40.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 580, -1));
+        jPanel40.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 580, -1));
 
         PanelPieChart.setPreferredSize(new java.awt.Dimension(520, 430));
         PanelPieChart.setLayout(new java.awt.BorderLayout());
-        jPanel40.add(PanelPieChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 510, 450));
+        jPanel40.add(PanelPieChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 340, 510, 450));
 
         tbl_studentdetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1018,7 +1003,7 @@ public void showPieChart(){
             tbl_studentdetails.getColumnModel().getColumn(3).setPreferredWidth(40);
         }
 
-        jPanel40.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 580, 200));
+        jPanel40.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 810, 200));
 
         tbl_bookdetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1056,11 +1041,11 @@ public void showPieChart(){
             tbl_bookdetails.getColumnModel().getColumn(3).setPreferredWidth(40);
         }
 
-        jPanel40.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 580, 200));
+        jPanel40.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, 810, 200));
 
-        getContentPane().add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 1200, 750));
+        getContentPane().add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 1560, 950));
 
-        setSize(new java.awt.Dimension(1535, 828));
+        setSize(new java.awt.Dimension(1905, 1023));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1073,21 +1058,20 @@ public void showPieChart(){
     }//GEN-LAST:event_jPanel39MouseClicked
 
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
-        int ch=JOptionPane.showConfirmDialog(this, "Confirm Log out","LOGGING OUT",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
-        if(ch==JOptionPane.YES_OPTION)
-        {
-            LoginPage login= new LoginPage();
+        int ch = JOptionPane.showConfirmDialog(this, "Confirm Log out", "LOGGING OUT", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (ch == JOptionPane.YES_OPTION) {
+            LoginPage login = new LoginPage();
             login.setVisible(true);
             dispose();
         }
-        
+
     }//GEN-LAST:event_jLabel40MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-       //TODO: uncomment after page implementation pushed
+        //TODO: uncomment after page implementation pushed
         // ManageBooks manage=new ManageBooks();
-       // manage.setVisible(true);
-       // dispose();
+        // manage.setVisible(true);
+        // dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
@@ -1145,8 +1129,8 @@ public void showPieChart(){
     private void jLabel38MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseExited
         jPanel38.setBackground(mouseExit);
     }//GEN-LAST:event_jLabel38MouseExited
-    Color logoutentrycolor=new Color(255,0,102);
-    Color logoutexitcolor=new Color(102,102,255);
+    Color logoutentrycolor = new Color(255, 0, 102);
+    Color logoutexitcolor = new Color(102, 102, 255);
     private void jLabel40MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseEntered
         jPanel39.setBackground(logoutentrycolor);
     }//GEN-LAST:event_jLabel40MouseEntered
@@ -1191,11 +1175,11 @@ public void showPieChart(){
     }//GEN-LAST:event_jLabel37MouseClicked
 
     private void tbl_studentdetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_studentdetailsMouseClicked
- 
+
     }//GEN-LAST:event_tbl_studentdetailsMouseClicked
 
     private void tbl_bookdetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_bookdetailsMouseClicked
-    
+
     }//GEN-LAST:event_tbl_bookdetailsMouseClicked
 
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
@@ -1218,7 +1202,7 @@ public void showPieChart(){
         //DashBoard dash=new DashBoard();
         //dash.setVisible(true);
         //dispose();
-        
+
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseEntered
