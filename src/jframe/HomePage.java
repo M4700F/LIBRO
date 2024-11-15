@@ -100,8 +100,8 @@ public class HomePage extends javax.swing.JFrame {
             Statement st = con.createStatement();
             ResultSet rst = st.executeQuery("select * from student_details");
             while (rst.next()) {
-                int student_id = rst.getInt("studentid");
-                String student_name = rst.getString("studentname");
+                int student_id = rst.getInt("student_id");
+                String student_name = rst.getString("name");
                 String course = rst.getString("course");
                 String branch = rst.getString("branch");
                 Object obj[] = {student_id, student_name, course, branch};
@@ -247,7 +247,7 @@ public class HomePage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 204));
-        setMinimumSize(new java.awt.Dimension(1535, 828));
+        setMinimumSize(new java.awt.Dimension(1800, 828));
         setName("HomepageFrame"); // NOI18N
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1535, 828));
@@ -271,7 +271,7 @@ public class HomePage extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 45, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 5, 45));
@@ -1045,15 +1045,15 @@ public class HomePage extends javax.swing.JFrame {
 
         getContentPane().add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 1560, 950));
 
-        setBounds(0, 0, 1411, 803);
+        setBounds(0, 0, 1802, 896);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel39MouseClicked
         JOptionPane.showMessageDialog(this, "Logging Out");
         //TODOP: Page needs implementation
-        //LoginPage logpage=new LoginPage();
-        //    logpage.setVisible(true);
-        //    dispose();
+            LoginPage logpage=new LoginPage();
+            logpage.setVisible(true);
+            dispose();
     }//GEN-LAST:event_jPanel39MouseClicked
 
     private void jLabel40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel40MouseClicked
@@ -1147,9 +1147,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
         //TODO: uncomment after page implementation pushed
-        //IssueBook issue = new IssueBook();
-        //issue.setVisible(true);
-        //dispose();
+        IssueBook issue = new IssueBook();
+        issue.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jLabel20MouseClicked
 
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
