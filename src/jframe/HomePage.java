@@ -1045,7 +1045,7 @@ public class HomePage extends javax.swing.JFrame {
 
         getContentPane().add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 1560, 950));
 
-        setBounds(0, 0, 1895, 800);
+        setBounds(0, 0, 1411, 803);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel39MouseClicked
