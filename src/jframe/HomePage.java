@@ -4,14 +4,15 @@
  */
 package jframe;
 
+import Jframe.IssueBook;
+import Jframe.ManageStudents;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import jframe.DBConnection;
-import jframe.LoginPage;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -39,40 +40,61 @@ public class HomePage extends javax.swing.JFrame {
     Color mouseExit = new Color(51, 51, 51);
 
     public void showPieChart() {
+    // Create dataset
+    DefaultPieDataset pieDataset = new DefaultPieDataset();
 
-        //create dataset
-        DefaultPieDataset barDataset = new DefaultPieDataset();
-        try {
-            Connection con = DBConnection.getConnection();
-            String sql = "select bookname, count(*) as issuecount from issue_book_details group by bookid";
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-                barDataset.setValue(rs.getString("bookname"), new Double(rs.getDouble("issuecount")));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    try (Connection con = DBConnection.getConnection();
+         Statement st = con.createStatement();
+         ResultSet rs = st.executeQuery("SELECT book_name, COUNT(*) AS issuecount FROM issue_book_details GROUP BY book_id, book_name")) {
+         
+        // Populate the dataset
+        while (rs.next()) {
+            pieDataset.setValue(rs.getString("book_name"), rs.getDouble("issuecount"));
         }
-
-        //create chart
-        JFreeChart piechart = ChartFactory.createPieChart("Issued Book Details", barDataset, true, true, false);//explain
-
-        PiePlot piePlot = (PiePlot) piechart.getPlot();
-
-        //changing pie chart blocks colors
-        piePlot.setSectionPaint("Java: A Beginner’s Guide", new Color(255, 255, 102));
-        piePlot.setSectionPaint("Head First Java", new Color(102, 255, 102));
-        piePlot.setSectionPaint("Java for Dummies", new Color(255, 102, 153));
-        piePlot.setSectionPaint("Effective Java", new Color(0, 204, 204));
-
-        piePlot.setBackgroundPaint(Color.white);
-
-        //create chartPanel to display chart(graph)
-        ChartPanel barChartPanel = new ChartPanel(piechart);
-        PanelPieChart.removeAll();
-        PanelPieChart.add(barChartPanel, BorderLayout.CENTER);
-        PanelPieChart.validate();
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+
+    // Create chart
+    JFreeChart pieChart = ChartFactory.createPieChart(
+        "Issued Book Details",
+        pieDataset,
+        true,  // Legend
+        true,  // Tooltips
+        false  // URLs
+    );
+
+    // Customize the pie chart
+    PiePlot piePlot = (PiePlot) pieChart.getPlot();
+    piePlot.setBackgroundPaint(Color.WHITE);
+
+    // Dynamic color assignment for sections
+    Color[] colors = {
+        new Color(255, 255, 102),
+        new Color(102, 255, 102),
+        new Color(255, 102, 153),
+        new Color(0, 204, 204),
+        new Color(255, 153, 51),
+        new Color(153, 102, 255)
+    };
+    int colorIndex = 0;
+
+    for (Object keyObj : pieDataset.getKeys()) {
+        Comparable<?> key = (Comparable<?>) keyObj; // Explicit cast
+        piePlot.setSectionPaint(key, colors[colorIndex % colors.length]);
+        colorIndex++;
+    }
+
+    // Create a chart panel to display the chart
+    ChartPanel chartPanel = new ChartPanel(pieChart);
+    chartPanel.setPreferredSize(new Dimension(PanelPieChart.getWidth(), PanelPieChart.getHeight()));
+
+    // Update the panel with the chart
+    PanelPieChart.removeAll();
+    PanelPieChart.add(chartPanel, BorderLayout.CENTER);
+    PanelPieChart.validate();
+}
+
 
     public void setDetailsToBookTable() {
 
@@ -81,8 +103,8 @@ public class HomePage extends javax.swing.JFrame {
             Statement st = con.createStatement();
             ResultSet rst = st.executeQuery("select * from book_details");
             while (rst.next()) {
-                int book_id = rst.getInt("bookid");
-                String book_name = rst.getString("bookname");
+                int book_id = rst.getInt("book_id");
+                String book_name = rst.getString("book_name");
                 String author = rst.getString("author");
                 int qty = rst.getInt("quantity");
                 Object obj[] = {book_id, book_name, author, qty};
@@ -114,29 +136,59 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     public void setDataToCards() {
-        Statement st = null;
-        ResultSet rs = null;
-        long due = System.currentTimeMillis();
-        java.sql.Date today = new java.sql.Date(due);
+    PreparedStatement pst = null;
+    ResultSet rs = null;
+    long due = System.currentTimeMillis();
+    java.sql.Date today = new java.sql.Date(due);
+
+    try (Connection con = DBConnection.getConnection()) {
+        // Query 1: Count books
+        String queryBooks = "SELECT COUNT(*) AS count FROM book_details";
+        pst = con.prepareStatement(queryBooks);
+        rs = pst.executeQuery();
+        if (rs.next()) {
+            lbl_books.setText(Integer.toString(rs.getInt("count")));
+        }
+
+        // Query 2: Count students
+        String queryStudents = "SELECT COUNT(*) AS count FROM student_details";
+        pst = con.prepareStatement(queryStudents);
+        rs = pst.executeQuery();
+        if (rs.next()) {
+            lbl_students.setText(Integer.toString(rs.getInt("count")));
+        }
+
+        // Query 3: Count pending issued books
+        String queryPending = "SELECT COUNT(*) AS count FROM issue_book_details WHERE status = ?";
+        pst = con.prepareStatement(queryPending);
+        pst.setString(1, "pending");
+        rs = pst.executeQuery();
+        if (rs.next()) {
+            lbl_issued.setText(Integer.toString(rs.getInt("count")));
+        }
+
+        // Query 4: Count defaulters
+        String queryDefaulters = "SELECT COUNT(*) AS count FROM issue_book_details WHERE due_date < ? AND status = ?";
+        pst = con.prepareStatement(queryDefaulters);
+        pst.setDate(1, today);
+        pst.setString(2, "pending");
+        rs = pst.executeQuery();
+        if (rs.next()) {
+            lbl_defaulters.setText(Integer.toString(rs.getInt("count")));
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
         try {
-            Connection con = DBConnection.getConnection();
-            st = con.createStatement();
-            rs = st.executeQuery("select * from book_details");
-            rs.last();
-            lbl_books.setText(Integer.toString(rs.getRow()));
-            rs = st.executeQuery("select * from student_details");
-            rs.last();
-            lbl_students.setText(Integer.toString(rs.getRow()));
-            rs = st.executeQuery("select * from issue_book_details where status='" + "pending" + "'");
-            rs.last();
-            lbl_issued.setText(Integer.toString(rs.getRow()));
-            rs = st.executeQuery("select * from issue_book_details where duedate<'" + today + "'and status='" + "pending" + "'");
-            rs.last();
-            lbl_defaulters.setText(Integer.toString(rs.getRow()));
-        } catch (Exception e) {
-            e.printStackTrace();
+            if (rs != null) rs.close();
+            if (pst != null) pst.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1140,9 +1192,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         
-        //ManageStudents manage= new ManageStudents();
-        //manage.setVisible(true);
-        //dispose();
+        ManageStudents manage= new ManageStudents();
+        manage.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
