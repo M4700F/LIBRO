@@ -1199,8 +1199,8 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
         //TODO: uncomment after page implementation pushed
-        IssueBook issue = new IssueBook();
-        issue.setVisible(true);
+        IssueBook book = new IssueBook();
+        book.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel20MouseClicked
 

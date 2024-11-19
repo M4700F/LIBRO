@@ -4,3 +4,5 @@ nbproject/private/private.xml
 nbproject/project.properties
 build/classes/jframe
 /build/
+/nbproject/private/
+nbproject/private/
