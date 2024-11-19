@@ -214,7 +214,9 @@ public class LoginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_rSMaterialButtonCircle1ActionPerformed
 
     private void rSMaterialButtonCircle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonCircle2ActionPerformed
-
+         SignupPage sign = new SignupPage();
+         sign.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_rSMaterialButtonCircle2ActionPerformed
     // shutting down the window
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked

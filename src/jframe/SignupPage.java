@@ -229,6 +229,11 @@ public class SignupPage extends javax.swing.JFrame {
         jPanel2.add(txt_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 540, -1, -1));
 
         rSMaterialButtonCircle1.setText("Login");
+        rSMaterialButtonCircle1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rSMaterialButtonCircle1MouseClicked(evt);
+            }
+        });
         jPanel2.add(rSMaterialButtonCircle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 700, 300, 70));
 
         rSMaterialButtonCircle2.setText("Sign Up");
@@ -315,6 +320,13 @@ public class SignupPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "username already exists");
         }
     }//GEN-LAST:event_txt_usernameFocusLost
+
+    private void rSMaterialButtonCircle1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSMaterialButtonCircle1MouseClicked
+        // TODO add your handling code here:
+        LoginPage login = new LoginPage();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_rSMaterialButtonCircle1MouseClicked
 
 
     /**

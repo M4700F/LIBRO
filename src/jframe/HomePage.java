@@ -4,7 +4,7 @@
  */
 package jframe;
 
-import Jframe.IssueBook;
+import jframe.IssueBook;
 import Jframe.ManageStudents;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -1206,9 +1206,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
         //TODO: uncomment after page implementation pushed
-        //ReturnBook ret= new ReturnBook();
-        //ret.setVisible(true);
-        //dispose();
+        ReturnBook ret= new ReturnBook();
+        ret.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel34MouseClicked
 
     private void jLabel36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel36MouseClicked
