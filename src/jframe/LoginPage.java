@@ -124,16 +124,16 @@ public class LoginPage extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 840));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel2.setBackground(new java.awt.Color(236, 221, 174));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Sitka Display", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Username");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 180, 30));
 
         jLabel5.setFont(new java.awt.Font("Sitka Display", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(85, 101, 107));
         jLabel5.setText("X");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -143,21 +143,25 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 20, -1));
 
         jLabel6.setFont(new java.awt.Font("Sitka Display", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
         jLabel6.setText("Welcome, login to your account");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 250, -1));
 
+        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Account_50px.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 50, -1));
 
         jLabel8.setFont(new java.awt.Font("Sitka Display", 1, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
         jLabel8.setText("Password");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 180, 30));
 
+        jLabel9.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Secure_50px.png"))); // NOI18N
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 50, -1));
 
+        rSMaterialButtonCircle1.setBackground(new java.awt.Color(85, 101, 107));
         rSMaterialButtonCircle1.setText("Login");
         rSMaterialButtonCircle1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,6 +170,7 @@ public class LoginPage extends javax.swing.JFrame {
         });
         jPanel2.add(rSMaterialButtonCircle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 300, 70));
 
+        rSMaterialButtonCircle2.setBackground(new java.awt.Color(85, 101, 107));
         rSMaterialButtonCircle2.setText("Sign Up");
         rSMaterialButtonCircle2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +179,7 @@ public class LoginPage extends javax.swing.JFrame {
         });
         jPanel2.add(rSMaterialButtonCircle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 600, 300, 70));
 
-        txt_username.setBackground(new java.awt.Color(102, 102, 255));
+        txt_username.setBackground(new java.awt.Color(171, 120, 120));
         txt_username.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txt_username.setPlaceholder("Enter Username ....");
         txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -184,13 +189,13 @@ public class LoginPage extends javax.swing.JFrame {
         });
         jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
 
-        txt_password.setBackground(new java.awt.Color(102, 102, 255));
+        txt_password.setBackground(new java.awt.Color(171, 120, 120));
         txt_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txt_password.setPlaceholder("Enter Password ....\n");
         jPanel2.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Sitka Display", 1, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setForeground(new java.awt.Color(153, 153, 153));
         jLabel14.setText("Login Page");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 160, -1));
 

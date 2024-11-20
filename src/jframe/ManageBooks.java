@@ -209,10 +209,10 @@ public class ManageBooks extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(236, 221, 174));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(85, 101, 107));
 
         jLabel11.setFont(new java.awt.Font("Te X Gyre Bonum", 0, 13)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -242,7 +242,7 @@ public class ManageBooks extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 50));
 
-        txt_bookId.setBackground(new java.awt.Color(102, 102, 255));
+        txt_bookId.setBackground(new java.awt.Color(171, 120, 120));
         txt_bookId.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txt_bookId.setPlaceholder("Enter Book ID....");
         txt_bookId.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -256,11 +256,11 @@ public class ManageBooks extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 30, 50));
 
         jLabel2.setFont(new java.awt.Font("Sitka Display", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(94, 68, 71));
         jLabel2.setText("Book ID");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 180, 30));
 
-        txt_bookName.setBackground(new java.awt.Color(102, 102, 255));
+        txt_bookName.setBackground(new java.awt.Color(171, 120, 120));
         txt_bookName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txt_bookName.setPlaceholder("Enter Book Name....");
         txt_bookName.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -274,11 +274,11 @@ public class ManageBooks extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Sitka Display", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(94, 68, 71));
         jLabel3.setText("Book Name");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 180, 30));
 
-        txt_authorName.setBackground(new java.awt.Color(102, 102, 255));
+        txt_authorName.setBackground(new java.awt.Color(171, 120, 120));
         txt_authorName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txt_authorName.setPlaceholder("Enter author name....");
         txt_authorName.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -297,11 +297,11 @@ public class ManageBooks extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Sitka Display", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(94, 68, 71));
         jLabel4.setText("Author Name");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 180, 30));
 
-        txt_quantity.setBackground(new java.awt.Color(102, 102, 255));
+        txt_quantity.setBackground(new java.awt.Color(171, 120, 120));
         txt_quantity.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txt_quantity.setPlaceholder("Enter quantity....");
         txt_quantity.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -315,10 +315,11 @@ public class ManageBooks extends javax.swing.JFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 530, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Sitka Display", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(94, 68, 71));
         jLabel5.setText("Quantity");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, 180, 30));
 
+        rSMaterialButtonCircle1.setBackground(new java.awt.Color(85, 101, 107));
         rSMaterialButtonCircle1.setText("DELETE");
         rSMaterialButtonCircle1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,6 +328,7 @@ public class ManageBooks extends javax.swing.JFrame {
         });
         jPanel1.add(rSMaterialButtonCircle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 670, 150, 80));
 
+        rSMaterialButtonCircle2.setBackground(new java.awt.Color(85, 101, 107));
         rSMaterialButtonCircle2.setText("ADD");
         rSMaterialButtonCircle2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,6 +337,7 @@ public class ManageBooks extends javax.swing.JFrame {
         });
         jPanel1.add(rSMaterialButtonCircle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 670, 150, 80));
 
+        rSMaterialButtonCircle3.setBackground(new java.awt.Color(85, 101, 107));
         rSMaterialButtonCircle3.setText("UPDATE");
         rSMaterialButtonCircle3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,7 +351,7 @@ public class ManageBooks extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel4.setBackground(new java.awt.Color(85, 101, 107));
 
         jLabel12.setFont(new java.awt.Font("Te X Gyre Bonum", 0, 35)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -385,6 +388,7 @@ public class ManageBooks extends javax.swing.JFrame {
                 "Book ID", "Name", "Author", "Quantity"
             }
         ));
+        tbl_bookDetails.setColorBackgoundHead(new java.awt.Color(171, 120, 120));
         tbl_bookDetails.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
         tbl_bookDetails.setRowHeight(40);
         tbl_bookDetails.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -397,12 +401,12 @@ public class ManageBooks extends javax.swing.JFrame {
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 870, 320));
 
         jLabel1.setFont(new java.awt.Font("Bitstream Charter", 0, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setForeground(new java.awt.Color(171, 120, 120));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AddNewBookIcons/icons8_Books_52px_1.png"))); // NOI18N
         jLabel1.setText("Manage Books");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 270, -1));
 
-        jPanel5.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel5.setBackground(new java.awt.Color(171, 120, 120));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

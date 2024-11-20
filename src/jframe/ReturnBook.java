@@ -181,7 +181,7 @@ public class ReturnBook extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBackground(new java.awt.Color(255, 51, 102));
+        jPanel4.setBackground(new java.awt.Color(85, 101, 107));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel4MouseClicked(evt);
@@ -199,12 +199,12 @@ public class ReturnBook extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1470, 0, 70, 40));
 
-        jPanel3.setBackground(new java.awt.Color(234, 67, 53));
+        jPanel3.setBackground(new java.awt.Color(236, 221, 174));
         jPanel3.setPreferredSize(new java.awt.Dimension(380, 828));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_issueDate.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        lbl_issueDate.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_issueDate.setForeground(new java.awt.Color(94, 68, 71));
         lbl_issueDate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbl_issueDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel3.add(lbl_issueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, 230, 30));
@@ -222,7 +222,7 @@ public class ReturnBook extends javax.swing.JFrame {
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 50, 30));
 
         jLabel10.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setForeground(new java.awt.Color(94, 68, 71));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("Book Name");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 190, 30));
@@ -234,7 +234,7 @@ public class ReturnBook extends javax.swing.JFrame {
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 50, 30));
 
         jLabel11.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setForeground(new java.awt.Color(94, 68, 71));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Student's Name");
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, 190, 30));
@@ -246,31 +246,31 @@ public class ReturnBook extends javax.swing.JFrame {
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 50, 30));
 
         jLabel12.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setForeground(new java.awt.Color(94, 68, 71));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("Issue Date");
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 190, 30));
 
         lbl_bookName.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        lbl_bookName.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_bookName.setForeground(new java.awt.Color(94, 68, 71));
         lbl_bookName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbl_bookName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel3.add(lbl_bookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 230, 30));
 
         lbl_studentName.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        lbl_studentName.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_studentName.setForeground(new java.awt.Color(94, 68, 71));
         lbl_studentName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbl_studentName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel3.add(lbl_studentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 230, 30));
 
         lbl_issueId.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        lbl_issueId.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_issueId.setForeground(new java.awt.Color(94, 68, 71));
         lbl_issueId.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbl_issueId.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel3.add(lbl_issueId, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 230, 30));
 
         jLabel31.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setForeground(new java.awt.Color(94, 68, 71));
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AddNewBookIcons/icons8_Literature_100px_1.png"))); // NOI18N
         jLabel31.setText("  Book Details");
@@ -283,7 +283,7 @@ public class ReturnBook extends javax.swing.JFrame {
         jPanel3.add(lbl_bookError, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 760, 280, 40));
 
         jLabel13.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setForeground(new java.awt.Color(94, 68, 71));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setText("Due Date");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 650, 190, 30));
@@ -295,13 +295,13 @@ public class ReturnBook extends javax.swing.JFrame {
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 700, 50, 30));
 
         lbl_dueDate.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        lbl_dueDate.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_dueDate.setForeground(new java.awt.Color(94, 68, 71));
         lbl_dueDate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lbl_dueDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         jPanel3.add(lbl_dueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 700, 230, 30));
 
         jLabel30.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setForeground(new java.awt.Color(94, 68, 71));
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel30.setText("Issue ID");
         jPanel3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 190, 30));
@@ -310,20 +310,20 @@ public class ReturnBook extends javax.swing.JFrame {
 
         jLabel22.setBackground(new java.awt.Color(234, 67, 53));
         jLabel22.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(234, 67, 53));
+        jLabel22.setForeground(new java.awt.Color(171, 120, 120));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AddNewBookIcons/icons8_Books_52px_1.png"))); // NOI18N
         jLabel22.setText("Return Book");
-        jLabel22.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(234, 67, 53)));
+        jLabel22.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(171, 120, 120)));
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 70, 490, 130));
 
         jLabel9.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(234, 67, 53));
+        jLabel9.setForeground(new java.awt.Color(171, 120, 120));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("Book ID:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 270, 120, 30));
 
-        txt_bookid.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(234, 67, 53)));
+        txt_bookid.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(171, 120, 120)));
         txt_bookid.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_bookid.setPhColor(new java.awt.Color(102, 102, 102));
         txt_bookid.setPlaceholder("Enter Book ID");
@@ -339,7 +339,7 @@ public class ReturnBook extends javax.swing.JFrame {
         });
         jPanel1.add(txt_bookid, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 270, 310, -1));
 
-        txt_studentid.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(234, 67, 53)));
+        txt_studentid.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(171, 120, 120)));
         txt_studentid.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_studentid.setPhColor(new java.awt.Color(102, 102, 102));
         txt_studentid.setPlaceholder("Enter Student ID");
@@ -355,13 +355,14 @@ public class ReturnBook extends javax.swing.JFrame {
         });
         jPanel1.add(txt_studentid, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 370, 310, -1));
 
+        jLabel23.setBackground(new java.awt.Color(171, 120, 120));
         jLabel23.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(234, 67, 53));
+        jLabel23.setForeground(new java.awt.Color(171, 120, 120));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel23.setText("Student ID:");
         jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 370, 120, 30));
 
-        rSMaterialButtonCircle1.setBackground(new java.awt.Color(102, 102, 255));
+        rSMaterialButtonCircle1.setBackground(new java.awt.Color(85, 101, 107));
         rSMaterialButtonCircle1.setText("Find");
         rSMaterialButtonCircle1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -389,7 +390,7 @@ public class ReturnBook extends javax.swing.JFrame {
         });
         jPanel1.add(rSMaterialButtonCircle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 590, 340, 70));
 
-        jPanel5.setBackground(new java.awt.Color(255, 51, 102));
+        jPanel5.setBackground(new java.awt.Color(85, 101, 107));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel5MouseClicked(evt);

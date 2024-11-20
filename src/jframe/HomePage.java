@@ -307,14 +307,17 @@ public class HomePage extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1528, 828));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(51, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(236, 221, 174));
         jPanel1.setPreferredSize(new java.awt.Dimension(1900, 70));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminIcons/icons8_menu_48px_1.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, 62));
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(171, 120, 120));
+        jPanel2.setForeground(new java.awt.Color(171, 120, 120));
         jPanel2.setPreferredSize(new java.awt.Dimension(5, 50));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -332,7 +335,7 @@ public class HomePage extends javax.swing.JFrame {
 
         jLabel5.setBackground(java.awt.Color.white);
         jLabel5.setFont(new java.awt.Font("Noto Sans CJK SC", 0, 34)); // NOI18N
-        jLabel5.setForeground(java.awt.Color.white);
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Libro");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, 60));
 
@@ -367,7 +370,7 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1.add(jPanel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(1830, 20, 40, 40));
 
         jLabel12.setFont(new java.awt.Font("Franklin Gothic Medium", 0, 28)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminIcons/male_user_50px.png"))); // NOI18N
         jLabel12.setText("Admin");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 260, 60));
@@ -941,7 +944,7 @@ public class HomePage extends javax.swing.JFrame {
         jPanel40.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel41.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel41.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, java.awt.Color.red));
+        jPanel41.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(85, 101, 107)));
         jPanel41.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_books.setFont(new java.awt.Font("Geometr415 Blk BT", 0, 50)); // NOI18N
@@ -965,7 +968,7 @@ public class HomePage extends javax.swing.JFrame {
         jPanel40.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 260, -1));
 
         jPanel42.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel42.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(102, 102, 255)));
+        jPanel42.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(197, 171, 157)));
         jPanel42.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_students.setFont(new java.awt.Font("Geometr415 Blk BT", 0, 50)); // NOI18N
@@ -977,7 +980,7 @@ public class HomePage extends javax.swing.JFrame {
         jPanel40.add(jPanel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 260, 140));
 
         jPanel43.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel43.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, java.awt.Color.red));
+        jPanel43.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(85, 101, 107)));
         jPanel43.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_issued.setFont(new java.awt.Font("Geometr415 Blk BT", 0, 50)); // NOI18N
@@ -1001,7 +1004,7 @@ public class HomePage extends javax.swing.JFrame {
         jPanel40.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 50, 260, -1));
 
         jPanel44.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel44.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(102, 102, 255)));
+        jPanel44.setBorder(javax.swing.BorderFactory.createMatteBorder(15, 0, 0, 0, new java.awt.Color(197, 171, 157)));
         jPanel44.setForeground(new java.awt.Color(102, 102, 255));
         jPanel44.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1045,7 +1048,7 @@ public class HomePage extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tbl_studentdetails.setColorBackgoundHead(new java.awt.Color(102, 102, 255));
+        tbl_studentdetails.setColorBackgoundHead(new java.awt.Color(94, 68, 71));
         tbl_studentdetails.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
         tbl_studentdetails.setColorFilasForeground1(new java.awt.Color(102, 102, 255));
         tbl_studentdetails.setColorFilasForeground2(new java.awt.Color(102, 102, 255));
@@ -1083,7 +1086,7 @@ public class HomePage extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tbl_bookdetails.setColorBackgoundHead(new java.awt.Color(102, 102, 255));
+        tbl_bookdetails.setColorBackgoundHead(new java.awt.Color(94, 68, 71));
         tbl_bookdetails.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
         tbl_bookdetails.setColorFilasForeground1(new java.awt.Color(102, 102, 255));
         tbl_bookdetails.setColorFilasForeground2(new java.awt.Color(102, 102, 255));

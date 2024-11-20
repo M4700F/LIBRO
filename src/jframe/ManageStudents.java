@@ -227,11 +227,11 @@ public class ManageStudents extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(236, 221, 174));
         jPanel1.setPreferredSize(new java.awt.Dimension(380, 828));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 51, 102));
+        jPanel2.setBackground(new java.awt.Color(85, 101, 107));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
@@ -273,7 +273,7 @@ public class ManageStudents extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AddNewBookIcons/icons8_Contact_26px.png"))); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 30, 40));
 
-        txt_studentid.setBackground(new java.awt.Color(102, 102, 255));
+        txt_studentid.setBackground(new java.awt.Color(171, 120, 120));
         txt_studentid.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txt_studentid.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_studentid.setPhColor(new java.awt.Color(255, 255, 255));
@@ -290,7 +290,7 @@ public class ManageStudents extends javax.swing.JFrame {
         });
         jPanel1.add(txt_studentid, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 250, -1));
 
-        txt_studentname.setBackground(new java.awt.Color(102, 102, 255));
+        txt_studentname.setBackground(new java.awt.Color(171, 120, 120));
         txt_studentname.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txt_studentname.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txt_studentname.setPhColor(new java.awt.Color(255, 255, 255));
@@ -343,7 +343,7 @@ public class ManageStudents extends javax.swing.JFrame {
         jLabel12.setText("Branch");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 170, 30));
 
-        rSMaterialButtonCircle1.setBackground(new java.awt.Color(0, 102, 255));
+        rSMaterialButtonCircle1.setBackground(new java.awt.Color(85, 101, 107));
         rSMaterialButtonCircle1.setText("Update");
         rSMaterialButtonCircle1.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         rSMaterialButtonCircle1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -358,7 +358,7 @@ public class ManageStudents extends javax.swing.JFrame {
         });
         jPanel1.add(rSMaterialButtonCircle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 130, 60));
 
-        rSMaterialButtonCircle2.setBackground(new java.awt.Color(255, 51, 51));
+        rSMaterialButtonCircle2.setBackground(new java.awt.Color(85, 101, 107));
         rSMaterialButtonCircle2.setText("Delete");
         rSMaterialButtonCircle2.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         rSMaterialButtonCircle2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -373,7 +373,7 @@ public class ManageStudents extends javax.swing.JFrame {
         });
         jPanel1.add(rSMaterialButtonCircle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, 130, 60));
 
-        rSMaterialButtonCircle3.setBackground(new java.awt.Color(255, 51, 51));
+        rSMaterialButtonCircle3.setBackground(new java.awt.Color(85, 101, 107));
         rSMaterialButtonCircle3.setText("Add");
         rSMaterialButtonCircle3.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         rSMaterialButtonCircle3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -411,7 +411,7 @@ public class ManageStudents extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBackground(new java.awt.Color(255, 51, 102));
+        jPanel4.setBackground(new java.awt.Color(85, 101, 107));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel4MouseClicked(evt);
@@ -437,7 +437,7 @@ public class ManageStudents extends javax.swing.JFrame {
                 "Student ID", "Name", "Course", "Branch"
             }
         ));
-        tbl_studentdetails.setColorBackgoundHead(new java.awt.Color(102, 102, 255));
+        tbl_studentdetails.setColorBackgoundHead(new java.awt.Color(171, 120, 120));
         tbl_studentdetails.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
         tbl_studentdetails.setColorFilasForeground1(new java.awt.Color(102, 102, 255));
         tbl_studentdetails.setColorFilasForeground2(new java.awt.Color(102, 102, 255));
@@ -455,9 +455,10 @@ public class ManageStudents extends javax.swing.JFrame {
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 790, 380));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(171, 120, 120));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AddNewBookIcons/icons8_Student_Male_100px.png"))); // NOI18N
         jLabel3.setText("Manage Students");
-        jLabel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 7, 0, new java.awt.Color(255, 51, 51)));
+        jLabel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 7, 0, new java.awt.Color(171, 120, 120)));
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 370, 110));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 1130, 830));

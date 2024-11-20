@@ -134,7 +134,7 @@ public class ViewAllRecord extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(197, 171, 157));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel31.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
@@ -151,8 +151,8 @@ public class ViewAllRecord extends javax.swing.JFrame {
         jLabel21.setText("Issue Date:");
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 120, 30));
 
-        date_fromDate.setBackground(new java.awt.Color(234, 67, 53));
-        date_fromDate.setForeground(new java.awt.Color(234, 67, 53));
+        date_fromDate.setBackground(new java.awt.Color(85, 101, 107));
+        date_fromDate.setForeground(new java.awt.Color(85, 101, 107));
         date_fromDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jPanel1.add(date_fromDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 320, 40));
 
@@ -162,11 +162,12 @@ public class ViewAllRecord extends javax.swing.JFrame {
         jLabel22.setText("Issue Date:");
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 120, 30));
 
-        date_toDate.setBackground(new java.awt.Color(234, 67, 53));
-        date_toDate.setForeground(new java.awt.Color(234, 67, 53));
+        date_toDate.setBackground(new java.awt.Color(85, 101, 107));
+        date_toDate.setForeground(new java.awt.Color(85, 101, 107));
         date_toDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jPanel1.add(date_toDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 210, 320, 40));
 
+        rSMaterialButtonCircle1.setBackground(new java.awt.Color(85, 101, 107));
         rSMaterialButtonCircle1.setText("Search");
         rSMaterialButtonCircle1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,7 +176,7 @@ public class ViewAllRecord extends javax.swing.JFrame {
         });
         jPanel1.add(rSMaterialButtonCircle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 190, 160, 70));
 
-        jPanel2.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(85, 101, 107));
 
         jLabel11.setFont(new java.awt.Font("Te X Gyre Bonum", 0, 13)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -205,7 +206,7 @@ public class ViewAllRecord extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 50));
 
-        jPanel4.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel4.setBackground(new java.awt.Color(85, 101, 107));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel4MouseClicked(evt);
@@ -247,6 +248,7 @@ public class ViewAllRecord extends javax.swing.JFrame {
         });
         jPanel1.add(rSMaterialButtonCircle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 190, 160, 70));
 
+        rSMaterialButtonCircle3.setBackground(new java.awt.Color(94, 68, 71));
         rSMaterialButtonCircle3.setText("ALL");
         rSMaterialButtonCircle3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,6 +270,7 @@ public class ViewAllRecord extends javax.swing.JFrame {
                 "Id", "Book Name", "Student Name", "Issue Date", "Due Date", "Status"
             }
         ));
+        tbl_issueBookDetails.setColorBackgoundHead(new java.awt.Color(85, 101, 107));
         tbl_issueBookDetails.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
         tbl_issueBookDetails.setRowHeight(40);
         tbl_issueBookDetails.addMouseListener(new java.awt.event.MouseAdapter() {

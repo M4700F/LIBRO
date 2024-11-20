@@ -114,16 +114,16 @@ public class IssuebookDetails extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel22.setBackground(new java.awt.Color(234, 67, 53));
+        jLabel22.setBackground(new java.awt.Color(171, 120, 120));
         jLabel22.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(234, 67, 53));
+        jLabel22.setForeground(new java.awt.Color(171, 120, 120));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AddNewBookIcons/icons8_Books_52px_1.png"))); // NOI18N
         jLabel22.setText("Issued Books Details");
-        jLabel22.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(234, 67, 53)));
+        jLabel22.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(171, 120, 120)));
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 490, 130));
 
-        jPanel5.setBackground(new java.awt.Color(255, 51, 102));
+        jPanel5.setBackground(new java.awt.Color(85, 101, 107));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel5MouseClicked(evt);
@@ -153,7 +153,7 @@ public class IssuebookDetails extends javax.swing.JFrame {
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
-        jPanel4.setBackground(new java.awt.Color(255, 51, 102));
+        jPanel4.setBackground(new java.awt.Color(85, 101, 107));
         jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel4MouseClicked(evt);
@@ -179,6 +179,7 @@ public class IssuebookDetails extends javax.swing.JFrame {
                 "Id", "Book Name", "Student Name", "Issue Date", "Due Date", "Status"
             }
         ));
+        tbl_issueBookDetails.setColorBackgoundHead(new java.awt.Color(171, 120, 120));
         tbl_issueBookDetails.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
         tbl_issueBookDetails.setRowHeight(40);
         tbl_issueBookDetails.addMouseListener(new java.awt.event.MouseAdapter() {
