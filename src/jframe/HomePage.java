@@ -1106,7 +1106,8 @@ public class HomePage extends javax.swing.JFrame {
 
         getContentPane().add(jPanel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 1560, 950));
 
-        setBounds(0, 0, 1802, 896);
+        setSize(new java.awt.Dimension(1802, 896));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel39MouseClicked
@@ -1229,9 +1230,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
         //TODO: uncomment after page implementation pushed
-        //ViewIssuedBooks viewissued=new ViewIssuedBooks();
-        //viewissued.setVisible(true);
-        //dispose();
+        IssuebookDetails viewissued=new IssuebookDetails();
+        viewissued.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jLabel37MouseClicked
 
     private void tbl_studentdetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_studentdetailsMouseClicked

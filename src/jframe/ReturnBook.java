@@ -313,7 +313,7 @@ public class ReturnBook extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(234, 67, 53));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AddNewBookIcons/icons8_Books_52px_1.png"))); // NOI18N
-        jLabel22.setText("    ISSUE BOOKS ");
+        jLabel22.setText("Return Book");
         jLabel22.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(234, 67, 53)));
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 70, 490, 130));
 
