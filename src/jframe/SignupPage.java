@@ -26,40 +26,81 @@ public class SignupPage extends javax.swing.JFrame {
     }
     
     // method to insert values into users table
-    public void insertSignupDetails(){
-        String name = txt_username.getText();
-        String pwd = txt_password.getText();
-        String email = txt_email.getText();
-        String contact = txt_contact.getText();
-        
-        try{
-            Connection conn = DBConnection.getConnection();
-            
-            // why can't we just write name, pwd, email, contact in the ? placeholder. Because this will lead to SQL injection attack.
-            String sql = "insert into users(name, password, email, contact) values (?,?,?,?)";
-            PreparedStatement pst = conn.prepareStatement(sql);
-            
-            pst.setString(1, name);
-            pst.setString(2, pwd);
-            pst.setString(3, email);
-            pst.setString(4, contact);
-            
-            // as it is a non-select query (non-select queries are insert, update, delete) we use executeUpdate() method which also returns the number of affected rows which can be a valuable resource
-            // for select query like select * from users we use executeQuery() which will return a result set
-            int updatedRowCount = pst.executeUpdate();
-            
-            if(updatedRowCount > 0) {
-                JOptionPane.showMessageDialog(this, "Record inserted Successfully.");
-                LoginPage login = new LoginPage();
-                login.setVisible(true);
-                this.dispose();
-            }else{
-                JOptionPane.showMessageDialog(this, "Record insertion Failed!");
-            }
-        } catch(Exception e){
-            e.printStackTrace();
+    public void insertSignupDetails() {
+    String name = txt_username.getText();
+    String pwd = txt_password.getText();
+    String email = txt_email.getText();
+    String contact = txt_contact.getText();
+
+    String sql = "INSERT INTO users(name, password, email, contact) VALUES (?, ?, ?, ?)";
+    try (Connection conn = DBConnection.getConnection();
+         PreparedStatement pst = conn.prepareStatement(sql)) {
+
+        // Set parameters for the prepared statement
+        pst.setString(1, name);
+        pst.setString(2, pwd);
+        pst.setString(3, email);
+        pst.setString(4, contact);
+
+        // Execute the update
+        int updatedRowCount = pst.executeUpdate();
+
+        if (updatedRowCount > 0) {
+            JOptionPane.showMessageDialog(this, "Record inserted successfully.");
+            LoginPage login = new LoginPage();
+            login.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Record insertion failed!");
         }
+
+    } catch (SQLException e) {
+        String errorMessage = e.getMessage();
+        if (errorMessage.contains("email")) {
+            JOptionPane.showMessageDialog(this, "Email already exists. Please use a different one.");
+        } else if (errorMessage.contains("contact")) {
+            JOptionPane.showMessageDialog(this, "Contact number already exists. Please use a different one.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Error occurred: " + errorMessage);
+        }
+        
     }
+}
+
+//    public void insertSignupDetails(){
+//        String name = txt_username.getText();
+//        String pwd = txt_password.getText();
+//        String email = txt_email.getText();
+//        String contact = txt_contact.getText();
+//        
+//        try{
+//            Connection conn = DBConnection.getConnection();
+//            
+//            // why can't we just write name, pwd, email, contact in the ? placeholder. Because this will lead to SQL injection attack.
+//            String sql = "insert into users(name, password, email, contact) values (?,?,?,?)";
+//            PreparedStatement pst = conn.prepareStatement(sql);
+//            
+//            pst.setString(1, name);
+//            pst.setString(2, pwd);
+//            pst.setString(3, email);
+//            pst.setString(4, contact);
+//            
+//            // as it is a non-select query (non-select queries are insert, update, delete) we use executeUpdate() method which also returns the number of affected rows which can be a valuable resource
+//            // for select query like select * from users we use executeQuery() which will return a result set
+//            int updatedRowCount = pst.executeUpdate();
+//            
+//            if(updatedRowCount > 0) {
+//                JOptionPane.showMessageDialog(this, "Record inserted Successfully.");
+//                LoginPage login = new LoginPage();
+//                login.setVisible(true);
+//                this.dispose();
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Record insertion Failed!");
+//            }
+//        } catch(Exception e){
+//            e.printStackTrace();
+//        }
+//    }
     
     // validation
     public boolean validateSignup() {
@@ -237,6 +278,11 @@ public class SignupPage extends javax.swing.JFrame {
         jPanel2.add(rSMaterialButtonCircle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 700, 300, 70));
 
         rSMaterialButtonCircle2.setText("Sign Up");
+        rSMaterialButtonCircle2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rSMaterialButtonCircle2MouseClicked(evt);
+            }
+        });
         rSMaterialButtonCircle2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSMaterialButtonCircle2ActionPerformed(evt);
@@ -327,6 +373,10 @@ public class SignupPage extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_rSMaterialButtonCircle1MouseClicked
+
+    private void rSMaterialButtonCircle2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSMaterialButtonCircle2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rSMaterialButtonCircle2MouseClicked
 
 
     /**

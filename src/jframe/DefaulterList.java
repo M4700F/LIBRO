@@ -77,33 +77,6 @@ public class DefaulterList extends javax.swing.JFrame {
 }
 
 
-
-    
-    
-    
-    
-//     public void setIssueBookDetailsToTable() {
-//        try {
-//            Connection con = DBConnection.getConnection();
-//            Statement st = con.createStatement();
-//            ResultSet rst = st.executeQuery("select * from issue_book_details where status='"+"pending"+"'");
-//            while (rst.next()) {
-//                String id = rst.getString("id");
-//                String bookName = rst.getString("book_name");
-//                String studentName = rst.getString("student_name");
-//                String issueDate = rst.getString("issue_date");
-//                String dueDate = rst.getString("due_date");
-//                String status = rst.getString("status");
-//
-//                Object obj[] = {id, bookName, studentName, issueDate, dueDate, status};
-//                model = (DefaultTableModel) tbl_issueBookDetails.getModel();
-//                model.addRow(obj);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

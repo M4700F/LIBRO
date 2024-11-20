@@ -97,3 +97,29 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+--check if user exists while signup
+DELIMITER $$
+
+CREATE TRIGGER before_user_insert
+BEFORE INSERT ON users
+FOR EACH ROW
+BEGIN
+    -- Check if the email already exists
+    IF EXISTS (
+        SELECT 1 FROM users WHERE email = NEW.email
+    ) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: A user with this email already exists.';
+    END IF;
+
+    -- Check if the contact already exists
+    IF EXISTS (
+        SELECT 1 FROM users WHERE contact = NEW.contact
+    ) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: A user with this contact number already exists.';
+    END IF;
+END$$
+
+DELIMITER ;
