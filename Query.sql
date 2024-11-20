@@ -34,3 +34,45 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+-- check_book_details_before_insert
+DELIMITER $$
+
+CREATE TRIGGER check_book_details_before_insert
+BEFORE INSERT ON book_details
+FOR EACH ROW
+BEGIN
+    -- Check if the book with the same book_id already exists
+    DECLARE book_count INT;
+    SELECT COUNT(*) INTO book_count
+    FROM book_details
+    WHERE book_id = NEW.book_id;
+    
+    -- If a book with the same book_id exists, prevent the insertion and raise an error
+    IF book_count > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Book ID already exists in the database.';
+    END IF;
+    
+    -- Check if the quantity is greater than 0
+    IF NEW.quantity <= 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Quantity must be greater than 0.';
+    END IF;
+    
+    -- Check if the author name is at least 3 characters long
+    IF LENGTH(NEW.author) < 3 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Author name must be at least 3 characters long.';
+    END IF;
+    
+    -- Check if the book name is not empty
+    IF NEW.book_name IS NULL OR TRIM(NEW.book_name) = '' THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Book name cannot be empty.';
+    END IF;
+    
+END$$
+
+DELIMITER ;
+

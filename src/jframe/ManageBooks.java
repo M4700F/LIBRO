@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
+import java.sql.SQLException;
+
 
 /**
  *
@@ -52,31 +54,56 @@ public class ManageBooks extends javax.swing.JFrame {
         }
     }
     //to add books to book details table
-    public boolean addBook()
-    {
-        boolean isAdded=false;
-        bookId=Integer.parseInt(txt_bookId.getText());
-        bookName=txt_bookName.getText();
-        author=txt_authorName.getText();
-        quantity=Integer.parseInt(txt_quantity.getText());
-        try
-        {
-            Connection con=DBConnection.getConnection();
-            PreparedStatement pst=con.prepareStatement("insert into book_details values(?,?,?,?)");
-            pst.setInt(1, bookId);
-            pst.setString(2,bookName);
-            pst.setString(3, author);
-            pst.setInt(4, quantity);
-            int rowcount=pst.executeUpdate();
-            if(rowcount>0)
-                isAdded=true;
+    public boolean addBook() {
+    boolean isAdded = false;
+    bookId = Integer.parseInt(txt_bookId.getText());
+    bookName = txt_bookName.getText();
+    author = txt_authorName.getText();
+    quantity = Integer.parseInt(txt_quantity.getText());
+
+    try {
+        Connection con = DBConnection.getConnection();
+        PreparedStatement pst = con.prepareStatement("INSERT INTO book_details VALUES(?,?,?,?)");
+        pst.setInt(1, bookId);
+        pst.setString(2, bookName);
+        pst.setString(3, author);
+        pst.setInt(4, quantity);
+
+        int rowcount = pst.executeUpdate();
+        if (rowcount > 0) {
+            isAdded = true;
         }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        return isAdded;
+    } catch (SQLException e) {
+        // Display an error message using JOptionPane
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
+    return isAdded;
+}
+//    public boolean addBook()
+//    {
+//        boolean isAdded=false;
+//        bookId=Integer.parseInt(txt_bookId.getText());
+//        bookName=txt_bookName.getText();
+//        author=txt_authorName.getText();
+//        quantity=Integer.parseInt(txt_quantity.getText());
+//        try
+//        {
+//            Connection con=DBConnection.getConnection();
+//            PreparedStatement pst=con.prepareStatement("insert into book_details values(?,?,?,?)");
+//            pst.setInt(1, bookId);
+//            pst.setString(2,bookName);
+//            pst.setString(3, author);
+//            pst.setInt(4, quantity);
+//            int rowcount=pst.executeUpdate();
+//            if(rowcount>0)
+//                isAdded=true;
+//        }
+//        catch(Exception e)
+//        {
+//            e.printStackTrace();
+//        }
+//        return isAdded;
+//    }
     
     //to update book details
     public boolean updateBook()
