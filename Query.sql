@@ -76,6 +76,7 @@ END$$
 
 DELIMITER ;
 
+--check_student_id_before_insert
 DELIMITER $$
 
 CREATE TRIGGER check_student_id_before_insert
