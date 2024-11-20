@@ -28,29 +28,66 @@ public class IssuebookDetails extends javax.swing.JFrame {
     }
     
     
-    
-    
-     public void setIssueBookDetailsToTable() {
-        try {
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rst = st.executeQuery("select * from issue_book_details where status='"+"pending"+"'");
-            while (rst.next()) {
-                String id = rst.getString("id");
-                String bookName = rst.getString("book_name");
-                String studentName = rst.getString("student_name");
-                String issueDate = rst.getString("issue_date");
-                String dueDate = rst.getString("due_date");
-                String status = rst.getString("status");
+    public void setIssueBookDetailsToTable() {
+    try {
+        // Establish connection
+        Connection con = DBConnection.getConnection();
 
-                Object obj[] = {id, bookName, studentName, issueDate, dueDate, status};
-                model = (DefaultTableModel) tbl_issueBookDetails.getModel();
-                model.addRow(obj);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        // SQL query with JOINs to fetch data from multiple tables
+        String query = "SELECT ibd.id, bd.book_name, sd.name AS student_name, ibd.issue_date, ibd.due_date, ibd.status "
+                     + "FROM issue_book_details ibd "
+                     + "JOIN book_details bd ON ibd.book_id = bd.book_id "
+                     + "JOIN student_details sd ON ibd.student_id = sd.student_id "
+                     + "WHERE ibd.status = 'pending'";
+
+        Statement st = con.createStatement();
+        ResultSet rst = st.executeQuery(query);
+
+        // Iterate through the result set and add to the table
+        while (rst.next()) {
+            String id = rst.getString("id");
+            String bookName = rst.getString("book_name");
+            String studentName = rst.getString("student_name"); // This will now refer to the 'name' column in student_details
+            String issueDate = rst.getString("issue_date");
+            String dueDate = rst.getString("due_date");
+            String status = rst.getString("status");
+
+            // Populate the table model
+            Object obj[] = {id, bookName, studentName, issueDate, dueDate, status};
+            model = (DefaultTableModel) tbl_issueBookDetails.getModel();
+            model.addRow(obj);
         }
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+}
+
+
+    
+    
+    
+    
+//     public void setIssueBookDetailsToTable() {
+//        try {
+//            Connection con = DBConnection.getConnection();
+//            Statement st = con.createStatement();
+//            ResultSet rst = st.executeQuery("select * from issue_book_details where status='"+"pending"+"'");
+//            while (rst.next()) {
+//                String id = rst.getString("id");
+//                String bookName = rst.getString("book_name");
+//                String studentName = rst.getString("student_name");
+//                String issueDate = rst.getString("issue_date");
+//                String dueDate = rst.getString("due_date");
+//                String status = rst.getString("status");
+//
+//                Object obj[] = {id, bookName, studentName, issueDate, dueDate, status};
+//                model = (DefaultTableModel) tbl_issueBookDetails.getModel();
+//                model.addRow(obj);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
