@@ -25,7 +25,7 @@ public class ViewAllRecord extends javax.swing.JFrame {
 
     public ViewAllRecord() {
         initComponents();
-        setIssueBookDetailsToTable();
+        setIssueBookDetailsToTable();   
     }
 
     public void setIssueBookDetailsToTable() {
