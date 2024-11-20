@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package jframe;
+
 import java.util.Date;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import jframe.DBConnection;
 import jframe.HomePage;
+
 /**
  *
  * @author Spooksy
@@ -20,148 +22,166 @@ public class IssueBook extends javax.swing.JFrame {
     public IssueBook() {
         initComponents();
     }
+
     //Get Book Details from DB
-    public void getBookDetails()
-    {
-        int bookId=Integer.parseInt(txt_bookid.getText());
-        try
-        {
-            Connection con=DBConnection.getConnection();
-            PreparedStatement pst=con.prepareStatement("select * from book_details where book_id=?");
-            pst.setInt(1,bookId);
-            ResultSet rs=pst.executeQuery();
-            if(rs.next())
-            {
+    public void getBookDetails() {
+        int bookId = Integer.parseInt(txt_bookid.getText());
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pst = con.prepareStatement("select * from book_details where book_id=?");
+            pst.setInt(1, bookId);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
                 lbl_bookid.setText(rs.getString("book_id"));
                 lbl_bookname.setText(rs.getString("book_name"));
                 lbl_author.setText(rs.getString("author"));
                 lbl_qty.setText(rs.getString("quantity"));
-            }
-            else
-            {
+            } else {
                 lbl_invalidbookid.setText("Invalid Book ID");
             }
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
+
     //Getting Student Details from DB
-    public void getStudentDetails()
-    {
-        int studentId=Integer.parseInt(txt_studentid.getText());
-        try
-        {
-            Connection con=DBConnection.getConnection();
-            PreparedStatement pst=con.prepareStatement("select * from student_details where student_id=?");
-            pst.setInt(1,studentId);
-            ResultSet rs=pst.executeQuery();
-            if(rs.next())
-            {
+    public void getStudentDetails() {
+        int studentId = Integer.parseInt(txt_studentid.getText());
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pst = con.prepareStatement("select * from student_details where student_id=?");
+            pst.setInt(1, studentId);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
                 lbl_studentid.setText(rs.getString("student_id"));
                 lbl_studentname.setText(rs.getString("name"));
                 lbl_course.setText(rs.getString("course"));
                 lbl_branch.setText(rs.getString("branch"));
-            }
-            else
-            {
+            } else {
                 lbl_invalidstudentid.setText("Invalid Student ID");
             }
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
+
     //Insert Issue Details into DB
-    public boolean issueBook()
-    {
-        boolean issued=false;
-        int bookId=Integer.parseInt(txt_bookid.getText());
-        int studentId=Integer.parseInt(txt_studentid.getText());
-        String bookName=lbl_bookname.getText();
-        String studentName=lbl_studentname.getText();
-        Date  uissueDate=txt_issuedate.getDate();
-        Date  udueDate=txt_duedate.getDate();
-        Long lissue=uissueDate.getTime();
-        Long ldue=udueDate.getTime();
-        java.sql.Date sissueDate= new java.sql.Date(lissue);
-        java.sql.Date sdueDate= new java.sql.Date(ldue);
-        try
-        {
-            Connection con=DBConnection.getConnection();
-            PreparedStatement ps=con.prepareStatement("insert into issue_book_details(book_id,book_name,student_id,student_name,issue_date,due_date,status) values (?,?,?,?,?,?,?)");
-            ps.setInt(1,bookId);
-            ps.setString(2,bookName);
-            ps.setInt(3,studentId);
-            ps.setString(4,studentName);
+    public boolean issueBook() {
+        boolean issued = false;
+        int bookId = Integer.parseInt(txt_bookid.getText());
+        int studentId = Integer.parseInt(txt_studentid.getText());
+        String bookName = lbl_bookname.getText();
+        String studentName = lbl_studentname.getText();
+        Date uissueDate = txt_issuedate.getDate();
+        Date udueDate = txt_duedate.getDate();
+
+        java.sql.Date sissueDate = new java.sql.Date(uissueDate.getTime());
+        java.sql.Date sdueDate = new java.sql.Date(udueDate.getTime());
+
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO issue_book_details (book_id, book_name, student_id, student_name, issue_date, due_date, status) VALUES (?, ?, ?, ?, ?, ?, ?)"
+            );
+            ps.setInt(1, bookId);
+            ps.setString(2, bookName);
+            ps.setInt(3, studentId);
+            ps.setString(4, studentName);
             ps.setDate(5, sissueDate);
-            ps.setDate(6,sdueDate);
+            ps.setDate(6, sdueDate);
             ps.setString(7, "Pending");
-            int rowcount=ps.executeUpdate();
-            if(rowcount>0)
-            {
-                issued=true;
+
+            int rowCount = ps.executeUpdate();
+            if (rowCount > 0) {
+                issued = true;
             }
-        }
-        catch(Exception e)
-        {
+        } catch (SQLIntegrityConstraintViolationException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return issued;
     }
+
+//    public boolean issueBook()
+//    {
+//        boolean issued=false;
+//        int bookId=Integer.parseInt(txt_bookid.getText());
+//        int studentId=Integer.parseInt(txt_studentid.getText());
+//        String bookName=lbl_bookname.getText();
+//        String studentName=lbl_studentname.getText();
+//        Date  uissueDate=txt_issuedate.getDate();
+//        Date  udueDate=txt_duedate.getDate();
+//        Long lissue=uissueDate.getTime();
+//        Long ldue=udueDate.getTime();
+//        java.sql.Date sissueDate= new java.sql.Date(lissue);
+//        java.sql.Date sdueDate= new java.sql.Date(ldue);
+//        try
+//        {
+//            Connection con=DBConnection.getConnection();
+//            PreparedStatement ps=con.prepareStatement("insert into issue_book_details(book_id,book_name,student_id,student_name,issue_date,due_date,status) values (?,?,?,?,?,?,?)");
+//            ps.setInt(1,bookId);
+//            ps.setString(2,bookName);
+//            ps.setInt(3,studentId);
+//            ps.setString(4,studentName);
+//            ps.setDate(5, sissueDate);
+//            ps.setDate(6,sdueDate);
+//            ps.setString(7, "Pending");
+//            int rowcount=ps.executeUpdate();
+//            if(rowcount>0)
+//            {
+//                issued=true;
+//            }
+//        }
+//        catch(Exception e)
+//        {
+//            e.printStackTrace();
+//        }
+//        return issued;
+//    }
     //Update Book Count after ever Issue
-    public void updateBookCount()
-    {
-        int bookId=Integer.parseInt(txt_bookid.getText());
-        try
-        {
-            Connection con =DBConnection.getConnection();
-            PreparedStatement ps=con.prepareStatement("update book_details set quantity=quantity-1 where book_id=?");
-            ps.setInt(1,bookId);
-            int rowcount=ps.executeUpdate();
-            if(rowcount>0)
-            {
+    public void updateBookCount() {
+        int bookId = Integer.parseInt(txt_bookid.getText());
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("update book_details set quantity=quantity-1 where book_id=?");
+            ps.setInt(1, bookId);
+            int rowcount = ps.executeUpdate();
+            if (rowcount > 0) {
                 JOptionPane.showMessageDialog(this, "Book Count Updated");
-                int updation=Integer.parseInt(lbl_qty.getText());
-                lbl_qty.setText(Integer.toString(updation-1));
-            }
-            else
+                int updation = Integer.parseInt(lbl_qty.getText());
+                lbl_qty.setText(Integer.toString(updation - 1));
+            } else {
                 JOptionPane.showMessageDialog(this, "Problem Updating Book Count");
-        }
-        catch(Exception e)
-        {
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     //Check Whether book already alloted or not
-    public boolean alreadyIssued()
-    {
-        boolean issued=false;
-        int bookId=Integer.parseInt(txt_bookid.getText());
-        int studentId=Integer.parseInt(txt_studentid.getText());
-        try
-        {
-            Connection con=DBConnection.getConnection();
-            PreparedStatement ps=con.prepareStatement("select * from issue_book_details where book_id=? and student_id=? and status=?");
+    public boolean alreadyIssued() {
+        boolean issued = false;
+        int bookId = Integer.parseInt(txt_bookid.getText());
+        int studentId = Integer.parseInt(txt_studentid.getText());
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("select * from issue_book_details where book_id=? and student_id=? and status=?");
             ps.setInt(1, bookId);
             ps.setInt(2, studentId);
             ps.setString(3, "pending");
-            ResultSet rs=ps.executeQuery();
-            if(rs.next())
-            {
-                issued=true;
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                issued = true;
             }
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return issued;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -558,20 +578,19 @@ public class IssueBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel4MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        HomePage home= new HomePage();
+        HomePage home = new HomePage();
         home.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
-        HomePage home= new HomePage();
+        HomePage home = new HomePage();
         home.setVisible(true);
         dispose();
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void txt_bookidFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_bookidFocusLost
-        if(!txt_bookid.getText().equals(""))
-        {
+        if (!txt_bookid.getText().equals("")) {
             getBookDetails();
         }
     }//GEN-LAST:event_txt_bookidFocusLost
@@ -581,8 +600,7 @@ public class IssueBook extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_bookidActionPerformed
 
     private void txt_studentidFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_studentidFocusLost
-        if(!txt_studentid.getText().equals(""))
-        {
+        if (!txt_studentid.getText().equals("")) {
             getStudentDetails();
         }
     }//GEN-LAST:event_txt_studentidFocusLost
@@ -596,23 +614,11 @@ public class IssueBook extends javax.swing.JFrame {
     }//GEN-LAST:event_rSMaterialButtonCircle1ActionPerformed
 
     private void rSMaterialButtonCircle1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSMaterialButtonCircle1MouseClicked
-        
-        if(lbl_qty.getText().equals("0"))
-            JOptionPane.showMessageDialog(this,"Book Not Available");
-        else
-        {
-            if(alreadyIssued()==false)
-            {
-                if(issueBook()==true)
-                {
-                    JOptionPane.showMessageDialog(this, "Book Issued Successfully");
-                    updateBookCount();
-                }
-                else
-                    JOptionPane.showMessageDialog(this, "Book Issue Failure");
-            }
-            else
-                JOptionPane.showMessageDialog(this, "This Student has already issued this Book");
+
+        if (issueBook()) {
+            JOptionPane.showMessageDialog(this, "Book Issued Successfully");
+        } else {
+            JOptionPane.showMessageDialog(this, "Book Issue Failed");
         }
     }//GEN-LAST:event_rSMaterialButtonCircle1MouseClicked
 
