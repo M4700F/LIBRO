@@ -1213,9 +1213,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jLabel36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel36MouseClicked
         //TODO: uncomment after page implementation pushed
-        //ViewRecords view=new ViewRecords();
-        //view.setVisible(true);
-        //dispose();
+        ViewAllRecord view=new ViewAllRecord();
+        view.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jLabel36MouseClicked
 
     private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
