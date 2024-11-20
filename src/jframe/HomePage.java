@@ -300,10 +300,11 @@ public class HomePage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 204));
+        setFocusCycleRoot(false);
         setMinimumSize(new java.awt.Dimension(1800, 828));
         setName("HomepageFrame"); // NOI18N
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1535, 828));
+        setPreferredSize(new java.awt.Dimension(1528, 828));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 255));
