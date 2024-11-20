@@ -30,10 +30,9 @@ public class DefaulterList extends javax.swing.JFrame {
     
     
     public void setIssueBookDetailsToTable() {
-        
-        long l = System.currentTimeMillis();
-        Date todaysDate = new Date(l);
-        
+    long l = System.currentTimeMillis();
+    Date todaysDate = new Date(l);
+
     try {
         // Establish connection
         Connection con = DBConnection.getConnection();
@@ -44,17 +43,20 @@ public class DefaulterList extends javax.swing.JFrame {
                      + "JOIN book_details bd ON ibd.book_id = bd.book_id "
                      + "JOIN student_details sd ON ibd.student_id = sd.student_id "
                      + "WHERE ibd.due_date < ? and ibd.status = ?";
-        
+
+        // Create PreparedStatement
         PreparedStatement pst = con.prepareStatement(query);
-        pst.setDate(1, todaysDate);
-        pst.setString(2, "pending");
-        ResultSet rst = pst.executeQuery(query);
+        pst.setDate(1, todaysDate); // Set the current date for the placeholder
+        pst.setString(2, "pending"); // Set the status for the placeholder
+
+        // Execute the query
+        ResultSet rst = pst.executeQuery();
 
         // Iterate through the result set and add to the table
         while (rst.next()) {
             String id = rst.getString("id");
             String bookName = rst.getString("book_name");
-            String studentName = rst.getString("student_name"); // This will now refer to the 'name' column in student_details
+            String studentName = rst.getString("student_name");
             String issueDate = rst.getString("issue_date");
             String dueDate = rst.getString("due_date");
             String status = rst.getString("status");
@@ -64,10 +66,16 @@ public class DefaulterList extends javax.swing.JFrame {
             model = (DefaultTableModel) tbl_issueBookDetails.getModel();
             model.addRow(obj);
         }
+
+//        // Close resources
+//        rst.close();
+//        pst.close();
+//        con.close();
     } catch (Exception e) {
         e.printStackTrace();
     }
 }
+
 
 
     
