@@ -375,13 +375,15 @@ public class HomePage extends javax.swing.JFrame {
         jLabel12.setText("Admin");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 260, 60));
 
-        jButton1.setText("Close");
+        jButton1.setBackground(new java.awt.Color(85, 101, 107));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 25)); // NOI18N
+        jButton1.setText("X");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1740, 0, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1730, 0, 70, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1900, 70));
 
