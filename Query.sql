@@ -76,3 +76,23 @@ END$$
 
 DELIMITER ;
 
+DELIMITER $$
+
+CREATE TRIGGER check_student_id_before_insert
+BEFORE INSERT ON student_details
+FOR EACH ROW
+BEGIN
+    -- Check if student_id already exists
+    DECLARE student_count INT;
+    
+    SELECT COUNT(*) INTO student_count
+    FROM student_details
+    WHERE student_id = NEW.student_id;
+
+    -- If student_id exists, raise an error
+    IF student_count > 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Student ID already exists';
+    END IF;
+END $$
+
+DELIMITER ;
