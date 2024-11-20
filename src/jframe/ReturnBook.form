@@ -647,13 +647,13 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icons/library-2.png"/>
+              <Image iconType="3" name="/libroo/rb.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Issue ID"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="60" width="500" height="740"/>
+              <AbsoluteConstraints x="0" y="30" width="500" height="740"/>
             </Constraint>
           </Constraints>
         </Component>
