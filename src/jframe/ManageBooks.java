@@ -48,7 +48,7 @@ public class ManageBooks extends javax.swing.JFrame {
                 
             }
         }catch(Exception e){
-            
+            e.printStackTrace();
         }
     }
     //to add books to book details table

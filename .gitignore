@@ -2,7 +2,6 @@ dbconfig.properties
 nbproject/private/private.properties
 nbproject/private/private.xml
 nbproject/project.properties
-build/classes/jframe
-/build/
 /nbproject/private/
 nbproject/private/
+build/

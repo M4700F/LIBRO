@@ -66,6 +66,7 @@ public class ViewAllRecord extends javax.swing.JFrame {
 
         java.sql.Date fromDate = new java.sql.Date(l1);
         java.sql.Date toDate = new java.sql.Date(l2);
+        
 
         try {
             Connection conn = DBConnection.getConnection();
@@ -76,12 +77,13 @@ public class ViewAllRecord extends javax.swing.JFrame {
             pst.setDate(2, toDate);
 
             ResultSet rs = pst.executeQuery();
+            
+            boolean recordFound = false;
 
-            if (rs.next() == false) {
-                JOptionPane.showMessageDialog(this, "No record found!");
-            } else {
-                while (rs.next()) {
-                    String id = rs.getString("id");
+            // if we use if(rs.next() == false) else { /* process row while(rs.next())*/}, then the first row will be skipped if there is records
+            while(rs.next()){
+                recordFound = true;
+                String id = rs.getString("id");
                     String bookName = rs.getString("book_name");
                     String studentName = rs.getString("student_name");
                     String issueDate = rs.getString("issue_date");
@@ -91,7 +93,9 @@ public class ViewAllRecord extends javax.swing.JFrame {
                     Object obj[] = {id, bookName, studentName, issueDate, dueDate, status};
                     model = (DefaultTableModel) tbl_issueBookDetails.getModel();
                     model.addRow(obj);
-                }
+            }
+            if(!recordFound){
+                JOptionPane.showMessageDialog(this, "No record found");
             }
 
         } catch (Exception e) {
