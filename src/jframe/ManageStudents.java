@@ -50,31 +50,64 @@ public class ManageStudents extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+//    public boolean addStudent()
+//    {
+//        boolean added=false;
+//        student_id=Integer.parseInt(txt_studentid.getText());
+//        student_name=txt_studentname.getText();
+//        course=txt_course.getSelectedItem().toString();
+//        branch=txt_branch.getSelectedItem().toString();
+//        try
+//        {
+//            Connection con=DBConnection.getConnection();
+//            PreparedStatement pst=con.prepareStatement("insert into student_details values(?,?,?,?)");
+//            pst.setInt(1, student_id);
+//            pst.setString(2,student_name);
+//            pst.setString(3, course);
+//            pst.setString(4, branch);
+//            int rowcount=pst.executeUpdate();
+//            if(rowcount>0)
+//                added=true;
+//        }
+//        catch(Exception e)
+//        {
+//            e.printStackTrace();
+//        }
+//        return added;
+//    }
+    
     public boolean addStudent()
+{
+    boolean added = false;
+    student_id = Integer.parseInt(txt_studentid.getText());
+    student_name = txt_studentname.getText();
+    course = txt_course.getSelectedItem().toString();
+    branch = txt_branch.getSelectedItem().toString();
+    
+    try
     {
-        boolean added=false;
-        student_id=Integer.parseInt(txt_studentid.getText());
-        student_name=txt_studentname.getText();
-        course=txt_course.getSelectedItem().toString();
-        branch=txt_branch.getSelectedItem().toString();
-        try
-        {
-            Connection con=DBConnection.getConnection();
-            PreparedStatement pst=con.prepareStatement("insert into student_details values(?,?,?,?)");
-            pst.setInt(1, student_id);
-            pst.setString(2,student_name);
-            pst.setString(3, course);
-            pst.setString(4, branch);
-            int rowcount=pst.executeUpdate();
-            if(rowcount>0)
-                added=true;
+        Connection con = DBConnection.getConnection();
+        PreparedStatement pst = con.prepareStatement("INSERT INTO student_details VALUES(?, ?, ?, ?)");
+        pst.setInt(1, student_id);
+        pst.setString(2, student_name);
+        pst.setString(3, course);
+        pst.setString(4, branch);
+        int rowcount = pst.executeUpdate();
+        
+        if (rowcount > 0) {
+            added = true;
         }
-        catch(Exception e)
-        {
+    }
+    catch (SQLException e)
+    {
+        if (e.getMessage().contains("Student ID already exists")) {
+            JOptionPane.showMessageDialog(this, "Error: Student ID already exists.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
             e.printStackTrace();
         }
-        return added;
     }
+    return added;
+}
     //Clear Table
     public void clearTable()
     {
