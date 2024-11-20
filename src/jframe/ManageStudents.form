@@ -549,7 +549,7 @@
               <Color blue="78" green="78" red="ab" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/AddNewBookIcons/icons8_Student_Male_100px.png"/>
+              <Image iconType="3" name="/adminIcons/icons8_Conference_26px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Manage Students"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

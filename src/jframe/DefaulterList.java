@@ -106,7 +106,7 @@ public class DefaulterList extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Nirmala UI", 1, 24)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(171, 120, 120));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AddNewBookIcons/icons8_Edit_Property_50px.png"))); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminIcons/icons8_Read_Online_26px.png"))); // NOI18N
         jLabel22.setText("Defaulter List");
         jLabel22.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 4, 0, new java.awt.Color(171, 120, 120)));
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 60, 490, 130));

@@ -456,7 +456,7 @@ public class ManageStudents extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(171, 120, 120));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AddNewBookIcons/icons8_Student_Male_100px.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminIcons/icons8_Conference_26px.png"))); // NOI18N
         jLabel3.setText("Manage Students");
         jLabel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 7, 0, new java.awt.Color(171, 120, 120)));
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 370, 110));

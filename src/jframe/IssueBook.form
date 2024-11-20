@@ -736,7 +736,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/AddNewBookIcons/icons8_Books_52px_1.png"/>
+              <Image iconType="3" name="/adminIcons/icons8_Book_26px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="    ISSUE BOOKS "/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
