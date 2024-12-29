@@ -5,6 +5,8 @@
 package jframe;
 
 // Import statements go here
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import jframe.HomePage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +25,23 @@ public class LoginPage extends javax.swing.JFrame {
         initComponents();
     }
     
-    // method to insert values into users table
+    // method to hash a password using SHA-256
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes()); // digest() method compute the hash of the input
+            StringBuilder sb = new StringBuilder();
+            for(byte b : hashedBytes){
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+            
+        }catch(NoSuchAlgorithmException e) {
+            JOptionPane.showMessageDialog(this, "Error occurred while hashing password");
+            e.printStackTrace();
+            return null;
+        }
+    }
     
     
     // validation
@@ -51,11 +69,14 @@ public class LoginPage extends javax.swing.JFrame {
         String pwd = txt_password.getText();
         
         try{
+            // Hash the entered password
+            String hashedpwd = hashPassword(pwd);
+            
             Connection conn = DBConnection.getConnection();
             PreparedStatement pst = conn.prepareStatement("Select * from users where name = ? and password = ?");
             
             pst.setString(1,name);
-            pst.setString(2,pwd);
+            pst.setString(2,hashedpwd);
             
             ResultSet rs = pst.executeQuery();
             if(rs.next()){

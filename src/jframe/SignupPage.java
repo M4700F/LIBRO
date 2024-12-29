@@ -12,6 +12,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+
+// Password Hashing
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  *
  * @author Admin
@@ -25,12 +30,33 @@ public class SignupPage extends javax.swing.JFrame {
         initComponents();
     }
     
+    // method to hash a password using SHA-256
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes()); // digest() method compute the hash of the input
+            StringBuilder sb = new StringBuilder();
+            for(byte b : hashedBytes){
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+            
+        }catch(NoSuchAlgorithmException e) {
+            JOptionPane.showMessageDialog(this, "Error occurred while hashing password");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     // method to insert values into users table
     public void insertSignupDetails() {
     String name = txt_username.getText();
     String pwd = txt_password.getText();
     String email = txt_email.getText();
     String contact = txt_contact.getText();
+    
+    // Hash the password
+    String hashedpwd = hashPassword(pwd);
 
     String sql = "INSERT INTO users(name, password, email, contact) VALUES (?, ?, ?, ?)";
     try (Connection conn = DBConnection.getConnection();
@@ -38,7 +64,7 @@ public class SignupPage extends javax.swing.JFrame {
 
         // Set parameters for the prepared statement
         pst.setString(1, name);
-        pst.setString(2, pwd);
+        pst.setString(2, hashedpwd);
         pst.setString(3, email);
         pst.setString(4, contact);
 
