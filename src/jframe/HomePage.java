@@ -401,7 +401,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminIcons/icons8_Home_26px_2.png"))); // NOI18N
         jLabel3.setText("   Home");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 190, -1));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, -1));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 340, 60));
 
@@ -452,7 +452,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/adminIcons/icons8_Library_26px_1.png"))); // NOI18N
-        jLabel11.setText("   Dashboard");
+        jLabel11.setText("View By Genre");
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel11MouseClicked(evt);
@@ -464,7 +464,7 @@ public class HomePage extends javax.swing.JFrame {
                 jLabel11MouseExited(evt);
             }
         });
-        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, 50));
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 220, 50));
 
         jPanel11.setBackground(new java.awt.Color(51, 51, 51));
         jPanel11.setForeground(java.awt.Color.red);
@@ -1266,9 +1266,9 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         //TODO: uncomment after page implementation pushed
-        //DashBoard dash=new DashBoard();
-        //dash.setVisible(true);
-        //dispose();
+        ViewByGenre viewgenre = new ViewByGenre();
+        viewgenre.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_jLabel11MouseClicked
 
