@@ -132,7 +132,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("C059", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(85, 101, 107));
-        jLabel1.setText("Libro");
+        jLabel1.setText("LIBRO");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/libroo/Login 3.png"))); // NOI18N
@@ -141,7 +141,7 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("C059", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(171, 120, 120));
         jLabel3.setText("Welcome To");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 840));
 
@@ -151,7 +151,7 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Sitka Display", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Username");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 180, 30));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 180, 30));
 
         jLabel5.setFont(new java.awt.Font("Sitka Display", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(85, 101, 107));
@@ -170,17 +170,17 @@ public class LoginPage extends javax.swing.JFrame {
 
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Account_50px.png"))); // NOI18N
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 50, 80));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 50, 80));
 
         jLabel8.setFont(new java.awt.Font("Sitka Display", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(153, 153, 153));
         jLabel8.setText("Password");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 180, 30));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 180, 30));
 
         jLabel9.setBackground(new java.awt.Color(102, 102, 102));
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Secure_50px.png"))); // NOI18N
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 50, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 50, -1));
 
         rSMaterialButtonCircle1.setBackground(new java.awt.Color(85, 101, 107));
         rSMaterialButtonCircle1.setText("Login");
@@ -208,12 +208,17 @@ public class LoginPage extends javax.swing.JFrame {
                 txt_usernameFocusLost(evt);
             }
         });
-        jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
+        jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
 
         txt_password.setBackground(new java.awt.Color(171, 120, 120));
         txt_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
         txt_password.setPlaceholder("Enter Password ....\n");
-        jPanel2.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
+        txt_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_passwordActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Sitka Display", 1, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(153, 153, 153));
