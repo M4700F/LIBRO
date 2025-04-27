@@ -76,6 +76,12 @@ public class IssueBook extends javax.swing.JFrame {
         String studentName = lbl_studentname.getText();
         Date uissueDate = txt_issuedate.getDate();
         Date udueDate = txt_duedate.getDate();
+        
+        // Add validation to check if due date is after issue date
+        if (udueDate.before(uissueDate)) {
+            JOptionPane.showMessageDialog(this, "Due date cannot be before issue date!", "Invalid Date", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
 
         java.sql.Date sissueDate = new java.sql.Date(uissueDate.getTime());
         java.sql.Date sdueDate = new java.sql.Date(udueDate.getTime());
@@ -585,14 +591,11 @@ public class IssueBook extends javax.swing.JFrame {
 
     private void rSMaterialButtonCircle1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSMaterialButtonCircle1MouseClicked
 
-        if (alreadyIssued()) {
-            JOptionPane.showMessageDialog(this, "This student already has this book issued!");
-        } else {
+        
             if (issueBook()) {
             JOptionPane.showMessageDialog(this, "Book Issued Successfully");
             } else {
             JOptionPane.showMessageDialog(this, "Book Issue Failed");
-        }
         }
     }//GEN-LAST:event_rSMaterialButtonCircle1MouseClicked
 
