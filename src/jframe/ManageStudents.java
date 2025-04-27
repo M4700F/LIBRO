@@ -340,7 +340,7 @@ public class ManageStudents extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel12.setText("Branch");
+        jLabel12.setText("Department");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 170, 30));
 
         rSMaterialButtonCircle1.setBackground(new java.awt.Color(85, 101, 107));
@@ -434,7 +434,7 @@ public class ManageStudents extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Student ID", "Name", "Course", "Branch"
+                "Student ID", "Name", "Course", "Department"
             }
         ));
         tbl_studentdetails.setColorBackgoundHead(new java.awt.Color(171, 120, 120));

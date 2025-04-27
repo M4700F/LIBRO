@@ -38,16 +38,18 @@ public class DefaulterList extends javax.swing.JFrame {
         Connection con = DBConnection.getConnection();
 
         // SQL query with JOINs to fetch data from multiple tables
-        String query = "SELECT ibd.id, bd.book_name, sd.name AS student_name, ibd.issue_date, ibd.due_date, ibd.status "
+        String query = "SELECT ibd.id, bd.book_name, sd.name AS student_name, ibd.issue_date, ibd.due_date, ibd.status, "
+                     + "calculate_fine(ibd.due_date, ?) AS fine "
                      + "FROM issue_book_details ibd "
                      + "JOIN book_details bd ON ibd.book_id = bd.book_id "
                      + "JOIN student_details sd ON ibd.student_id = sd.student_id "
-                     + "WHERE ibd.due_date < ? and ibd.status = ?";
+                     + "WHERE ibd.due_date < ? AND ibd.status = ?";
 
         // Create PreparedStatement
         PreparedStatement pst = con.prepareStatement(query);
         pst.setDate(1, todaysDate); // Set the current date for the placeholder
-        pst.setString(2, "pending"); // Set the status for the placeholder
+        pst.setDate(2, todaysDate);
+        pst.setString(3, "pending"); // Set the status for the placeholder
 
         // Execute the query
         ResultSet rst = pst.executeQuery();
@@ -60,9 +62,10 @@ public class DefaulterList extends javax.swing.JFrame {
             String issueDate = rst.getString("issue_date");
             String dueDate = rst.getString("due_date");
             String status = rst.getString("status");
+            String fine = rst.getString("fine");
 
             // Populate the table model
-            Object obj[] = {id, bookName, studentName, issueDate, dueDate, status};
+            Object obj[] = {id, bookName, studentName, issueDate, dueDate, status, fine};
             model = (DefaultTableModel) tbl_issueBookDetails.getModel();
             model.addRow(obj);
         }
@@ -164,7 +167,7 @@ public class DefaulterList extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Book Name", "Student Name", "Issue Date", "Due Date", "Status"
+                "Id", "Book Name", "Student Name", "Issue Date", "Due Date", "Status", "Fine"
             }
         ));
         tbl_issueBookDetails.setColorBackgoundHead(new java.awt.Color(171, 120, 120));

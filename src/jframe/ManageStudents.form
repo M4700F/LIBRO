@@ -289,7 +289,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="text" type="java.lang.String" value="Branch"/>
+            <Property name="text" type="java.lang.String" value="Department"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -481,7 +481,7 @@
                     <Column editable="true" title="Student ID" type="java.lang.Object"/>
                     <Column editable="true" title="Name" type="java.lang.Object"/>
                     <Column editable="true" title="Course" type="java.lang.Object"/>
-                    <Column editable="true" title="Branch" type="java.lang.Object"/>
+                    <Column editable="true" title="Department" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="colorBackgoundHead" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
