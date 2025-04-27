@@ -11,12 +11,12 @@ import java.util.Properties;
 
 /**
  *
- * @author Admin
+ * @author spooksy
  */
 public class DBConnection {
     static Connection conn = null;
     
-    // why static is used ? when we use a method as static we don't have to create instances of that class to gain access to that method. Simply we write DBConncection.getConnection()
+    // used static to make instanceless method access possible
     public static Connection getConnection(){
         try{
             Properties props = new Properties();
