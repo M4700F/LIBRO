@@ -81,6 +81,11 @@ public class IssueBook extends javax.swing.JFrame {
         java.sql.Date sdueDate = new java.sql.Date(udueDate.getTime());
 
         try {
+            
+            if(alreadyIssued()){
+                JOptionPane.showMessageDialog(this, "This book is already issued to the student.");
+                issued = false;
+            }else {
             Connection con = DBConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO issue_book_details (book_id, book_name, student_id, student_name, issue_date, due_date, status) VALUES (?, ?, ?, ?, ?, ?, ?)"
@@ -97,6 +102,7 @@ public class IssueBook extends javax.swing.JFrame {
             if (rowCount > 0) {
                 issued = true;
             }
+            }
         } catch (SQLIntegrityConstraintViolationException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         } catch (Exception e) {
@@ -105,42 +111,6 @@ public class IssueBook extends javax.swing.JFrame {
         return issued;
     }
 
-//    public boolean issueBook()
-//    {
-//        boolean issued=false;
-//        int bookId=Integer.parseInt(txt_bookid.getText());
-//        int studentId=Integer.parseInt(txt_studentid.getText());
-//        String bookName=lbl_bookname.getText();
-//        String studentName=lbl_studentname.getText();
-//        Date  uissueDate=txt_issuedate.getDate();
-//        Date  udueDate=txt_duedate.getDate();
-//        Long lissue=uissueDate.getTime();
-//        Long ldue=udueDate.getTime();
-//        java.sql.Date sissueDate= new java.sql.Date(lissue);
-//        java.sql.Date sdueDate= new java.sql.Date(ldue);
-//        try
-//        {
-//            Connection con=DBConnection.getConnection();
-//            PreparedStatement ps=con.prepareStatement("insert into issue_book_details(book_id,book_name,student_id,student_name,issue_date,due_date,status) values (?,?,?,?,?,?,?)");
-//            ps.setInt(1,bookId);
-//            ps.setString(2,bookName);
-//            ps.setInt(3,studentId);
-//            ps.setString(4,studentName);
-//            ps.setDate(5, sissueDate);
-//            ps.setDate(6,sdueDate);
-//            ps.setString(7, "Pending");
-//            int rowcount=ps.executeUpdate();
-//            if(rowcount>0)
-//            {
-//                issued=true;
-//            }
-//        }
-//        catch(Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-//        return issued;
-//    }
     //Update Book Count after ever Issue
     public void updateBookCount() {
         int bookId = Integer.parseInt(txt_bookid.getText());
@@ -615,10 +585,14 @@ public class IssueBook extends javax.swing.JFrame {
 
     private void rSMaterialButtonCircle1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSMaterialButtonCircle1MouseClicked
 
-        if (issueBook()) {
-            JOptionPane.showMessageDialog(this, "Book Issued Successfully");
+        if (alreadyIssued()) {
+            JOptionPane.showMessageDialog(this, "This student already has this book issued!");
         } else {
+            if (issueBook()) {
+            JOptionPane.showMessageDialog(this, "Book Issued Successfully");
+            } else {
             JOptionPane.showMessageDialog(this, "Book Issue Failed");
+        }
         }
     }//GEN-LAST:event_rSMaterialButtonCircle1MouseClicked
 
