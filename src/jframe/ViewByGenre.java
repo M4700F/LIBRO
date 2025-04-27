@@ -3,6 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package jframe;
+import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import java.sql.SQLException;
 
 /**
  *
@@ -15,7 +22,98 @@ public class ViewByGenre extends javax.swing.JFrame {
      */
     public ViewByGenre() {
         initComponents();
+
+        // 1) Override the generated model with 5 columns
+        tbl_issueBookDetails.setModel(new DefaultTableModel(
+          new Object[][]{}, 
+          new String[]{ "Book ID", "Book Name", "Author", "Quantity", "Genre" }
+        ));
+
+        // 2) Fill in data and genres
+        setBookDetailsToTable();
+        loadGenresIntoCombo();
     }
+    
+    private void clearTable() {
+        DefaultTableModel m = (DefaultTableModel) tbl_issueBookDetails.getModel();
+        m.setRowCount(0);
+    }
+
+    private void setBookDetailsToTable() {
+        clearTable();
+        String sql = "SELECT book_id, book_name, author, quantity, genre FROM book_details";
+        try ( Connection con = DBConnection.getConnection();
+              PreparedStatement pst = con.prepareStatement(sql);
+              ResultSet rs = pst.executeQuery() )
+        {
+            DefaultTableModel m = (DefaultTableModel) tbl_issueBookDetails.getModel();
+            while (rs.next()) {
+                m.addRow(new Object[]{
+                    rs.getInt("book_id"),
+                    rs.getString("book_name"),
+                    rs.getString("author"),
+                    rs.getInt("quantity"),
+                    rs.getString("genre")
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadGenresIntoCombo() {
+        jComboBox1.removeAllItems();
+        String sql = "SELECT DISTINCT genre FROM book_details WHERE genre IS NOT NULL ORDER BY genre";
+        try ( Connection con = DBConnection.getConnection();
+              PreparedStatement pst = con.prepareStatement(sql);
+              ResultSet rs = pst.executeQuery() )
+        {
+            while (rs.next()) {
+                jComboBox1.addItem(rs.getString("genre"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void searchByGenre() {
+        String genre = (String) jComboBox1.getSelectedItem();
+        if (genre == null || genre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please select a genre.");
+            return;
+        }
+        clearTable();
+        String sql = "SELECT book_id, book_name, author, quantity, genre FROM book_details WHERE genre = ?";
+        try ( Connection con = DBConnection.getConnection();
+              PreparedStatement pst = con.prepareStatement(sql) )
+        {
+            pst.setString(1, genre);
+            try ( ResultSet rs = pst.executeQuery() ) {
+                DefaultTableModel m = (DefaultTableModel) tbl_issueBookDetails.getModel();
+                boolean found = false;
+                while (rs.next()) {
+                    found = true;
+                    m.addRow(new Object[]{
+                        rs.getInt("book_id"),
+                        rs.getString("book_name"),
+                        rs.getString("author"),
+                        rs.getInt("quantity"),
+                        rs.getString("genre")
+                    });
+                }
+                if (!found) {
+                    JOptionPane.showMessageDialog(
+                      this,
+                      "No books found for genre \"" + genre + "\"."
+                    );
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -229,6 +327,17 @@ public class ViewByGenre extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void rSMaterialButtonCircle1ActionPerformed(java.awt.event.ActionEvent evt) {
+    // SEARCH
+        searchByGenre();
+    }
+
+    private void rSMaterialButtonCircle3ActionPerformed(java.awt.event.ActionEvent evt) {
+        // ALL
+        setBookDetailsToTable();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
