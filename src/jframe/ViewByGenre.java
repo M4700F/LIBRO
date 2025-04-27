@@ -337,6 +337,10 @@ public class ViewByGenre extends javax.swing.JFrame {
         // ALL
         setBookDetailsToTable();
     }
+    
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        System.exit(0);
+    } 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
